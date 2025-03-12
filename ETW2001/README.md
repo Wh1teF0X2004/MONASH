@@ -3,6 +3,7 @@
 - Assessment 1 (30%)
 - Assessment 2 (30%)
 - Assessment 3 (40%)
+- Technologies Used: R Programming, Microsoft Words/Google Docs, Microsoft PowerPoint/Google Slides/Canva
 
 ## Assessment 1
 - Individual Assessment
@@ -11,4 +12,4 @@
 - Individual Assessment
 
 ## Assessment 3
-- Group Assessment
+- Team/Group Assessment
