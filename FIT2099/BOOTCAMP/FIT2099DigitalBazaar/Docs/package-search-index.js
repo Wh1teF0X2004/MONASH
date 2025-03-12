@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"FIT2099DigitalBazaar"},{"l":"FIT2099DigitalBazaar.controllers"},{"l":"FIT2099DigitalBazaar.models.devices"},{"l":"FIT2099DigitalBazaar.models.purchases"},{"l":"FIT2099DigitalBazaar.utils"}];updateSearchResults();
