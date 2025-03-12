@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="cabbage_logo.jpg" type="image/png">
+    <link rel="icon" href="event_page.jpg" type="image/png">
+    <link href="bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header style="max-width: 100%; display: flex; justify-content: center; align-items: center; margin-bottom: -2rem;">
+        <img src="event_page.jpg" style="max-width: 100%; max-height: 15rem; width: auto;">
+    </header> 
+    <main class="d-flex justify-content-center mt-4">
+        <div class="card" style="width: 1000px">
+            <div class="container" style="width: 70%;">
+                <form id="categoryForm" class="needs-validation" novalidate action="/33085625/category/details">
+                    <% if (event_detail) { %>
+                        <p><strong>Event ID:</strong><%= event_detail.id %></p>
+                        <p><strong>Name:</strong><%= event_detail.name %></p>
+                        <p><strong>Description:</strong><%= event_detail.description %></p>
+                        <p><strong>Start Date and Time:</strong> <%= event_detail.startDateTime %></p>
+                        <% let end = new Date(event_detail.startDateTime) %>
+                        <% end.setMinutes(end.getMinutes() + parseInt(event_detail.duration)) %>
+                        <%= end.toLocaleString() %>
+                        <p><strong>End Date and Time:</strong> <%= end.toLocaleString() %></p>
+                        <p><strong>Duration:</strong> <%= event_detail.duration %> hours</p>
+                        <p><strong>Is Active:</strong> <%= event_detail.isActive %></p>
+                        <p><strong>Capacity:</strong> <%= event_detail.capacity %></p>
+                        <p><strong>Tickets Available:</strong> <%= event_detail.ticketsAvailable %></p>
+                        <p><strong>Category ID:</strong> <%= event_detail.categoryId %></p>
+                    <% } else { %>
+                        <img src="404.jpg" style="max-width: 100%; max-height: 70rem; width: auto;">
+                    <% } %>
+                    <a type="button" href="/" class="btn btn-primary">Home</a>
+                </form>
+            </div>
+        </div>
+    </div> 
+</body>
+</html>

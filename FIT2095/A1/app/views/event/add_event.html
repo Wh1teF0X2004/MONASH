@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="icon" href="<%= favicon %>" type="image/png">
+    <link href="bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="d-flex justify-content-center align-items-center">
+        <a href="/"><img src="<%= banner %>" class="img-fluid" alt="Banner" style="max-height: 8rem;"></a>
+    </header>
+    <div class="container mb-5">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title mb-4">Create Event</h1>
+                <form id="eventForm" action="<%= route %>" method="POST" class="needs-validation">
+                    <div class="form-group mb-3">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" name="name" required>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label for="description">Description:</label>
+                        <textarea class="form-control" name="description"></textarea>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label for="startDateTime">Start Date and Time:</label>
+                        <input type="datetime-local" class="form-control" name="startDateTime" required>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label for="duration">Duration (in minutes):</label>
+                        <input type="number" class="form-control" name="duration" required>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label for="isActive">Is Active:</label>
+                        <select class="form-control" name="isActive" required>
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="imagePath">Image Path:</label>
+                        <input type="text" class="form-control" name="imagePath">
+                    </div>
+    
+                    <div class="form-group mb-3">
+                        <label for="capacity">Capacity:</label>
+                        <input type="number" class="form-control" name="capacity">
+                    </div>
+    
+                    <div class="form-group mb-3">
+                        <label for="tickets">Tickets Available:</label>
+                        <input type="number" class="form-control" name="tickets">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="categoryId">Category ID:</label>
+                        <input type="text" class="form-control" name="categoryId" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary mt-4">Create Event</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

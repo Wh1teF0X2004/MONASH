@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="cabbage_logo.jpg" type="image/png">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px; 
+        }
+        tr + tr {
+            border-top: 1px solid grey; 
+        }
+    </style>
+</head>
+<body>
+    <header style="max-width: 100%; display: flex; justify-content: center; align-items: center; margin-bottom: -2rem;">
+        <img src="<%= banner %>" style="max-width: 100%; max-height: 8rem;">
+    </header>
+    <div class="container" style="width: 100%;">
+        <h1>List Category:</h1>
+        <p><strong><%=keyword%></strong></p>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Created date</th>
+                <th>Actions</th>
+            </tr>
+            <% for (let i = 0; i < categoryArray.length; i++) { %>
+                <tr>
+                    <td><%= categoryArray[i].id %></td>
+                    <td><%= categoryArray[i].name %></td>
+                    <td><%= categoryArray[i].description %></td>
+                    <td><img src=<%= categoryArray[i].image %> width="20%" height="15%" /></td>
+                    <td><%= categoryArray[i].createdAt %></td>
+                    <td>
+                        <form action="event_detail.html">
+                            <button type="submit" style="margin-top: 1rem;" class="btn btn-primary">View</button>
+                        </form>
+                    </td>
+                </tr>
+            <% } %>
+            </table>
+            </code>
+        </pre>
+    </div>
+</body>
+</html>

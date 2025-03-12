@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="icon" href="<%= favicon %>" type="image/png">
+    <link href="/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header style="max-width: 100%; display: flex; justify-content: center; align-items: center; margin-bottom: -2rem;">
+        <% if (category) { %>
+            <a href="/"><img src="/<%= category.image %>" style="max-width: 100%; max-height: 15rem;"></a>
+        <% } else { %>
+            <a href="/"><img src="/<%= banner %>" class="img-fluid" alt="Banner" style="max-height: 8rem;"></a>
+        <% } %>
+    </header> 
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <% if (category) { %>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title"><%= category.name %></h2>
+                        <p class="card-text"><%= category.description %></p>
+                        <p class="card-text"><strong>Category ID:</strong> <%= category.id %></p>
+                        <p class="card-text"><strong>Created at:</strong> <%= category.createdAt %></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row row-cols-1 g-3">
+                            <div class="col">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Start</th>
+                                            <th scope="col">End</th>
+                                            <th scope="col">Duration</th>
+                                            <th scope="col">Is Active</th>
+                                            <th scope="col">Capacity</th>
+                                            <th scope="col">Tickets Available</th>
+                                            <th scope="col">Category ID</th>
+                                            <th scope="col">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                          <% for (let i = 0; i < db.length; i++) { %>
+                                              <% if (db[i].categoryId.toString() === category.id.toString()) { %>
+                                                  <tr>
+                                                      <th scope="row"><%= db[i].id %></th>
+                                                      <td><%= db[i].name %></td>
+                                                      <td>
+                                                          <% let start = new Date(db[i].startDateTime) %>
+                                                          <%= start.toLocaleString() %>
+                                                      </td>
+                                                      <td>
+                                                          <% let end = new Date(db[i].startDateTime) %>
+                                                          <% end.setMinutes(end.getMinutes() + parseInt(db[i].duration)) %>
+                                                          <%= end.toLocaleString() %>
+                                                      </td>
+                                                      <td><%= db[i].duration %></td>
+                                                      <td><%= db[i].isActive %></td>
+                                                      <td><%= db[i].capacity %></td>
+                                                      <td><%= db[i].ticketsAvailable %></td>
+                                                      <td><a class="btn btn-primary" href="/euan/event/detail/<%= db[i].categoryId %>">View <%= db[i].categoryId %></a></td>
+                                                      <td><a href="/33085625/category/detail?id=<%= db[i].id %>" class="btn btn-primary">View Event</a></td>
+                                                  </tr>
+                                              <% } %>
+                                          <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } else { %>
+                <div class="text-center">
+                    <img src="/404.jpg" class="img-fluid" alt="404 Image" style="max-height: 70vh;">
+                </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

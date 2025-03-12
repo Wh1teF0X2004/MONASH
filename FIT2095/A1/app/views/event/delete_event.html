@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="icon" href="<%= favicon %>" type="image/png">
+    <link href="bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="d-flex justify-content-center align-items-center">
+        <a href="/"><img src="<%= banner %>" class="img-fluid" alt="Banner" style="max-height: 8rem;"></a>
+    </header>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">Delete Event</h1>
+                <form id="eventForm" action="<%= route %>" method="POST" class="needs-validation" novalidate>
+                    <div class="form-group">
+                        <label for="name">Event id:</label>
+                        <input type="text" class="form-control" name="eventId" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Delete Event</button>
+                </form>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="<%= favicon %>" type="image/png">
+    <link href="bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <main class = "main-index-content">
+        <img class = "img-main-logo" src="cabbage_logo.jpg">
+    </main>
+    <section class="section-cards" style="margin-bottom: 2rem">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Category</h5>
+              <p class="card-text">Event category functionality including adding, listing and deleting event category as well as showing events details and listing event category by keyword.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><a class="nav-item nav-link" href="/33085625/category/add">Add Category</a></li>
+              <li class="list-group-item"><a class="nav-item nav-link" href="/33085625/category/delete">Delete Category</a></li>
+              <li class="list-group-item"><a class="nav-item nav-link" href="/33085625/category/list">List All Categories</a></li>
+              <li class="list-group-item"><a class="nav-item nav-link" href="/33085625/category/keyword?keyword=undefined">List by keyword</a></li>
+              <li class="list-group-item"><a class="nav-item nav-link" href="/33085625/category/detail">Event detail</a></li>
+            </ul>
+            <div class="card-body">
+              <a href="">Foo Kai Yan</a>
+              <a href="">33085625</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Event</h5>
+              <p class="card-text">Event Functionality includes, adding, deleting, displaying all past events and current. below are the links to their respective pages. Additionally deleting can be done so via a query or through the webpage.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><a class="nav-item nav-link" href="/euan/event/add">Add Event</a></li>
+              <li class="list-group-item"><a class="nav-item nav-link" href="/euan/event/delete">Delete Event by Id</a></li>
+              <li class="list-group-item"><a class="nav-item nav-link" href="/euan/event/list">List All Events</a></li>
+              <li class="list-group-item"><a class="nav-item nav-link" href="/euan/event/sold">List All Sold Out Events</a></li>
+              <li class="list-group-item"><a class="nav-item nav-link" href="/euan/event/detail/0">Category Detail</a></li>
+            </ul>
+            <div class="card-body">
+              <a href="">Euan Lim</a>
+              <a href="">33045984</a>
+            </div>
+          </div>
+    </section>
+    <footer class="bg-dark text-center text-white">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2023 Built by:
+          <a class="text-white">Team Cabbage</a>
+        </div>
+    </footer>
+</body>
+</html>
