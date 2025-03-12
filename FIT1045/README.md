@@ -1,5 +1,5 @@
 # FIT1045/FIT1053 - ALGORITHMS AND PROGRAMMING IN PYTHON
-- Class 2022 Semester 2
+- Class 2022 Semester 1
 - Assessment 1 (15%)
 - Assessment 2 (20%)
 - Assessment 3 (25%)
