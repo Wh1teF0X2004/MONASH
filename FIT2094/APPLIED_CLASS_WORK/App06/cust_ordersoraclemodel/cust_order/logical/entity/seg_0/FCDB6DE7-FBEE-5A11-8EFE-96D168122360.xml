@@ -1,0 +1,110 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="FCDB6DE7-FBEE-5A11-8EFE-96D168122360" name="CUSTOMER">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-03 03:23:18 UTC</createdTime>
+<ownerDesignName>cust_order</ownerDesignName>
+<engineerTo>
+<item key="63FDC9C6-839C-05AB-5457-3E4BB34715EF" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="cust_no" id="258C8F4E-2465-9C04-CE9D-11D0B3B31E04">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-03 03:24:11 UTC</createdTime>
+<commentInRDBMS><![CDATA[customer number]]></commentInRDBMS>
+<ownerDesignName>cust_order</ownerDesignName>
+<engineerTo>
+<item key="63FDC9C6-839C-05AB-5457-3E4BB34715EF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cust_name" id="136D7A9F-8448-0522-9303-0AB6C82B2F4E">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-03 03:26:08 UTC</createdTime>
+<commentInRDBMS><![CDATA[customer name]]></commentInRDBMS>
+<ownerDesignName>cust_order</ownerDesignName>
+<engineerTo>
+<item key="63FDC9C6-839C-05AB-5457-3E4BB34715EF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cust_add" id="E8628704-0C1F-E6A1-4158-FAF3FFE2510E">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-03 03:26:30 UTC</createdTime>
+<commentInRDBMS><![CDATA[customer address]]></commentInRDBMS>
+<ownerDesignName>cust_order</ownerDesignName>
+<engineerTo>
+<item key="63FDC9C6-839C-05AB-5457-3E4BB34715EF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cust_phone" id="1EB099CD-7232-6B05-DB18-50E08768EBF8">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-03 03:26:31 UTC</createdTime>
+<commentInRDBMS><![CDATA[customer phone number]]></commentInRDBMS>
+<ownerDesignName>cust_order</ownerDesignName>
+<engineerTo>
+<item key="63FDC9C6-839C-05AB-5457-3E4BB34715EF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cust_level" id="64F05A11-327C-D28A-4263-1CF0E95E0B99">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-03 03:27:27 UTC</createdTime>
+<commentInRDBMS><![CDATA[customer level]]></commentInRDBMS>
+<ownerDesignName>cust_order</ownerDesignName>
+<engineerTo>
+<item key="63FDC9C6-839C-05AB-5457-3E4BB34715EF" value="true"/>
+</engineerTo>
+<constraintName>chk_cust_lvl</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<listOfValues>
+<valueDef value="b" description="bronze"/>
+<valueDef value="g" description="gold"/>
+<valueDef value="s" description="silver"/>
+</listOfValues>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="B48EA48C-9463-85D4-AF53-9E48B69BAB02" name="CUSTOMER PK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-03 03:27:52 UTC</createdTime>
+<ownerDesignName>cust_order</ownerDesignName>
+<engineerTo>
+<item key="63FDC9C6-839C-05AB-5457-3E4BB34715EF" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>258C8F4E-2465-9C04-CE9D-11D0B3B31E04</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

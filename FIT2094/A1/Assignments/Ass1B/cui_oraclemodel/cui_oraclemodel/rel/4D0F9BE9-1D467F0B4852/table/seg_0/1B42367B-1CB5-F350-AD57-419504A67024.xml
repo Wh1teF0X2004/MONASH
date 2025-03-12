@@ -1,0 +1,78 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1B42367B-1CB5-F350-AD57-419504A67024" name="OWNER">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>A5747231-4719-37EF-003C-813B2F23D84A</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="owner_id" id="F88C0303-49E3-D32E-5B4E-3CF8ED1EC35B">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Owner ID]]></commentInRDBMS>
+<generatorID>B61AAC8F-6F67-A89A-A468-1B3093840055</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="owner_name" id="A7B1CFAA-1307-D351-7E69-C6E5B0798441">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Owner name]]></commentInRDBMS>
+<generatorID>0BA83D5A-7DB4-9A86-1517-2C93520E428E</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="owner_email" id="CEFDC77F-C7E2-7BF8-5FFA-ABB41B9A9EF1">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Owner email]]></commentInRDBMS>
+<generatorID>FE557DB7-0E0B-09B4-CB17-34A49D41AF5B</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="owner_contact" id="75FDEAF4-AFE9-34B6-5AA7-1D6A7A5D737F">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Owner contact number]]></commentInRDBMS>
+<generatorID>11642E85-8817-0395-3E0A-FF3E0E79BA0E</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8A00666A-8A92-D454-D4CC-6B4FBB882860" name="OWNER_PK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>770FAA5F-DC5B-5AA6-A57A-751D38B25212</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F88C0303-49E3-D32E-5B4E-3CF8ED1EC35B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,78 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="EF06C692-6E63-604D-62CF-56700F6CE1F2" name="REPORT">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>E81E12C3-7D2E-D9F1-A8EB-B7642E0C8743</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="con_num" id="BDE980C3-6D20-AB91-1785-28C6E990B363">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Contract Number]]></commentInRDBMS>
+<generatorID>2F9BE8B4-8B1C-A26E-1B0E-2EACE996507F</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="waste_id" id="811CD1D1-EE77-DF1F-5F4D-1188CE561D5F">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Waste Type ID]]></commentInRDBMS>
+<generatorID>DF2ED673-F107-5CD4-20C1-CA68805DCD2A</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="waste_type_desc" id="8A766A6E-E4DF-A5A0-61BC-5D4C10237273">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Waste Type Description]]></commentInRDBMS>
+<generatorID>582080F3-1D25-672D-B2CE-34DF057E5F13</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="collection_frequency" id="D5470A75-21F2-C286-D145-3DD9EC4EEBC7">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Collection Frequency]]></commentInRDBMS>
+<generatorID>84EFE5DF-5B73-10A0-9AB8-2E48B1096ABD</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="592EACF1-6C79-CEA2-51DB-D5DF1F413098" name="REPORT_PK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>C1738DD8-9B21-A90D-C836-4D06927202B5</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BDE980C3-6D20-AB91-1785-28C6E990B363"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

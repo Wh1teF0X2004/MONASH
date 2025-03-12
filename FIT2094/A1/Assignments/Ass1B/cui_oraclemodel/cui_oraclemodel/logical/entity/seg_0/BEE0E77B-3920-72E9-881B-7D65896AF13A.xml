@@ -1,0 +1,80 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="BEE0E77B-3920-72E9-881B-7D65896AF13A" name="WASTE_DETAIL">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-01 16:20:14 UTC</createdTime>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="contract_collection_cost" id="F5EB186A-8DF3-5AB9-7658-9BA163867F42">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-01 16:20:32 UTC</createdTime>
+<commentInRDBMS><![CDATA[Cost of collecting waste stated in contract]]></commentInRDBMS>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="contract_id" id="11506332-D634-B724-E4D5-529E4EBBE483">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-01 17:01:20 UTC</createdTime>
+<commentInRDBMS><![CDATA[Contract Number]]></commentInRDBMS>
+<generatorID>75FB6F99-16EA-1CA9-BC2D-0490BFD3F39A</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<referedAttribute>D7D150C2-776A-6EB0-DF8E-F02B7E5D0540</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="waste_type_id" id="0641B75B-4C39-AFCF-1387-DDA5604EB9C7">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 14:10:30 UTC</createdTime>
+<commentInRDBMS><![CDATA[Waste Type ID]]></commentInRDBMS>
+<generatorID>89077512-13BC-5CDB-FC4D-2FD49D9BCDF7</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<referedAttribute>C3C3A811-DF7F-79DF-2AD3-D5CC0236B264</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="2582BE9A-95EB-7AB5-2FE1-56013DE2A03A" name="WASTE_DETAIL PK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-01 17:01:20 UTC</createdTime>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>11506332-D634-B724-E4D5-529E4EBBE483</attributeRef>
+<attributeRef>0641B75B-4C39-AFCF-1387-DDA5604EB9C7</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

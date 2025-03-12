@@ -1,0 +1,104 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="502DD999-4E0B-41AA-5798-099B5712F5F9" name="AUTHORITY">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>783867B5-1F68-5A51-1FFA-C71A657F81B7</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="au_name" id="CEDC0B81-8D6A-17E1-8BC2-DF557ADEFF55">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Name of authority]]></commentInRDBMS>
+<generatorID>0181F1BB-22AF-533C-457B-C458AC070CFD</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="au_chief_executive_fname" id="E319D56A-44FA-7411-2F93-2FBDF8D2C432">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[First name of the chief executive authority]]></commentInRDBMS>
+<generatorID>F1CEB163-7FB6-A36C-1ECB-DFD8AA600098</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="au_chief_executive_lname" id="E2233BD5-13CE-BD31-1A41-95C252BDD41B">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Last name of the chief executive authority]]></commentInRDBMS>
+<generatorID>64425289-8DE1-7933-26C9-05EFC31B67E9</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="au_contact" id="DD6EF341-7A43-9E26-4235-911F824AE00D">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[contact number of authority]]></commentInRDBMS>
+<generatorID>F14D0282-DAA0-9484-6484-E2520EFFCAB0</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="au_total_area" id="C9877C2F-7C91-070C-CAF3-758968E1E381">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[total area responsible by authority]]></commentInRDBMS>
+<generatorID>86BAAF76-827D-4CA7-5F82-71EE3CEC8DD1</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="au_type" id="E1227AD7-C716-DC34-829B-6BBE533CE0E9">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[type of authority]]></commentInRDBMS>
+<generatorID>BB98C024-E38A-9504-BDD6-6BCBF6501781</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="AF8679C4-08DF-3599-9741-02DA58F1750D" name="AUTHORITY_PK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>0CA87DC9-E2DC-37DD-9E3B-CAB57E744C42</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CEDC0B81-8D6A-17E1-8BC2-DF557ADEFF55"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

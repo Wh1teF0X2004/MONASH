@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5232076E-8411-3166-8CF7-A803EC806C62" name="REPORTv2">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>9A32E0AF-B8C5-672E-F65E-EA5899237D34</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="collection_date" id="DFFADF2E-6D7D-FDA5-9D24-BCB4FB6599FE">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Date of Collection]]></commentInRDBMS>
+<generatorID>0CC0FE20-9E91-56D5-908A-81B8B807FAD5</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="dri_no" id="AA7DAE36-5CDF-6E28-0BE2-78983F38E454">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Driver Number]]></commentInRDBMS>
+<generatorID>CC2BC07D-0EDC-5FD5-9BBE-97CA109A4E9A</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="truck_vin" id="9A680F05-AEC1-F90A-9C54-91DA698FD662">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Collection Truck VIN]]></commentInRDBMS>
+<generatorID>7BC70B4D-7D2E-B514-DBA2-99D3E57D166C</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="125D745A-4F94-B55D-301D-F6ABEAC5A55D" name="REPORTv2_PK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>5A5B4B3B-57E3-D935-77B6-6686878309D8</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DFFADF2E-6D7D-FDA5-9D24-BCB4FB6599FE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

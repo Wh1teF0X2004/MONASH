@@ -1,0 +1,11 @@
+use("kfoo0012");
+
+// db.studentEnrolment.insertOne(
+//     {"_id":11443959,"name":"Geraldine Lomb","contactInfo":{"address":"55 Northwestern Trail, Toorak","phone":"4819717953","email":"Geraldine.Lomb@student.monash.edu"},"enrolmentInfo":[{"unitcode":"FIT1045","year":"2020","semester":2,"mark":39,"grade":"N"},{"unitcode":"FIT2094","year":"2021","semester":2,"mark":51,"grade":"P"},{"unitcode":"FIT3157","year":"2021","semester":1,"mark":74,"grade":"D"},{"unitcode":"FIT2094","year":"2021","semester":1,"mark":38,"grade":"N"},{"unitcode":"FIT1050","year":"2020","semester":2,"mark":50,"grade":"P"}]}
+// );
+
+db.studentEnrolment.insertMany([
+    {"_id":11620237,"name":"Marlane Joiris","contactInfo":{"address":"385 Warbler Road, Preston","phone":"5493750951","email":"Marlane.Joiris@student.monash.edu"},"enrolmentInfo":[{"unitcode":"FIT1045","year":"2020","semester":2,"mark":74,"grade":"D"},{"unitcode":"FIT3176","year":"2021","semester":2,"mark":93,"grade":"HD"},{"unitcode":"FIT3157","year":"2021","semester":1,"mark":null,"grade":"DEF"},{"unitcode":"FIT2094","year":"2021","semester":1,"mark":33,"grade":"N"},{"unitcode":"FIT1050","year":"2020","semester":2,"mark":57,"grade":"P"}]},
+    {"_id":12489379,"name":"Gilberto Bwy","contactInfo":{"address":"5664 Loomis Parkway, Melbourne","phone":"7037621034","email":"Gilberto.Bwy@student.monash.edu"},"enrolmentInfo":[{"unitcode":"FIT1045","year":"2019","semester":1,"mark":40,"grade":"N"},{"unitcode":"FIT2094","year":"2020","semester":1,"mark":63,"grade":"C"},{"unitcode":"FIT1050","year":"2019","semester":2,"mark":92,"grade":"HD"},{"unitcode":"FIT1045","year":"2019","semester":2,"mark":89,"grade":"HD"},{"unitcode":"FIT1050","year":"2019","semester":1,"mark":44,"grade":"N"}]},
+    {"_id":12511467,"name":"Francyne Rigney","contactInfo":{"address":"75 Buhler Street, Mulgrave","phone":"6994152403","email":"Francyne.Rigney@student.monash.edu"},"enrolmentInfo":[{"unitcode":"FIT1045","year":"2019","semester":1,"mark":87,"grade":"HD"},{"unitcode":"FIT3176","year":"2020","semester":1,"mark":null,"grade":"WH"},{"unitcode":"FIT3157","year":"2019","semester":2,"mark":98,"grade":"HD"},{"unitcode":"FIT2094","year":"2019","semester":2,"mark":83,"grade":"HD"},{"unitcode":"FIT1050","year":"2019","semester":1,"mark":86,"grade":"HD"}]}
+]);

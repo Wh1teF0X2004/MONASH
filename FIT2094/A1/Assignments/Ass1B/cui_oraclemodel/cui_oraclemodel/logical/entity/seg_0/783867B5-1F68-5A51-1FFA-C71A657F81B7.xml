@@ -1,0 +1,117 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="783867B5-1F68-5A51-1FFA-C71A657F81B7" name="AUTHORITY">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-01 15:52:58 UTC</createdTime>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="au_name" id="0181F1BB-22AF-533C-457B-C458AC070CFD">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-01 15:53:09 UTC</createdTime>
+<commentInRDBMS><![CDATA[Name of authority]]></commentInRDBMS>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="au_chief_executive_fname" id="F1CEB163-7FB6-A36C-1ECB-DFD8AA600098">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-01 15:53:09 UTC</createdTime>
+<commentInRDBMS><![CDATA[First name of the chief executive authority]]></commentInRDBMS>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="au_chief_executive_lname" id="64425289-8DE1-7933-26C9-05EFC31B67E9">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-01 15:53:09 UTC</createdTime>
+<commentInRDBMS><![CDATA[Last name of the chief executive authority]]></commentInRDBMS>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="au_contact" id="F14D0282-DAA0-9484-6484-E2520EFFCAB0">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-01 15:53:09 UTC</createdTime>
+<commentInRDBMS><![CDATA[contact number of authority]]></commentInRDBMS>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="au_total_area" id="86BAAF76-827D-4CA7-5F82-71EE3CEC8DD1">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-01 15:53:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[total area responsible by authority]]></commentInRDBMS>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="au_type" id="BB98C024-E38A-9504-BDD6-6BCBF6501781">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-01 15:53:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[type of authority]]></commentInRDBMS>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="0CA87DC9-E2DC-37DD-9E3B-CAB57E744C42" name="AUTHORITY PK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-01 15:54:09 UTC</createdTime>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>0181F1BB-22AF-533C-457B-C458AC070CFD</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

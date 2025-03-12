@@ -1,0 +1,118 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2B89F298-8631-B55B-FE8F-811B0CE05A4F" name="TRUCK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>7C660392-540A-0307-9B7D-5C90556F0421</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="truck_vin" id="DF292F70-CDA1-53A1-0A2A-722FEDFDA33B">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Collection Truck VIN]]></commentInRDBMS>
+<generatorID>783893A7-82E6-7F1B-FA6F-0E948FB3C8DD</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="truck_regonum" id="E731A154-A099-AD1D-8B47-BA28D34597CA">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Rego Number of authorised truck]]></commentInRDBMS>
+<generatorID>5906F0C5-4A1C-8142-724F-0674EE52434B</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="truck_make" id="89D218B6-D59E-259A-4C02-A6B9FB5F8C4A">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Maker of authorised truck]]></commentInRDBMS>
+<generatorID>AC2316A4-0599-C499-C8B6-359EB556B510</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="truck_model" id="720C6B12-4D64-609B-A5FB-DB7505D4285C">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Model of authorised truck]]></commentInRDBMS>
+<generatorID>034F680B-526E-E83F-0D76-18EAF4569A26</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="truck_year" id="2525B551-CF82-DF53-4BC3-695C1825FC55">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Year of authorised truck]]></commentInRDBMS>
+<generatorID>C5163A5E-9322-3BFF-2422-D07CCD974839</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="collection_date" id="8AFC4A15-3E91-2882-8DAA-A7E1E6373F52">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Date of Collection]]></commentInRDBMS>
+<generatorID>2105C863-32C5-D2C1-AA9D-F366B1E0F83E</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="751F672C-9A60-CD99-E605-B925D68AAA29" referredColumn="DFFADF2E-6D7D-FDA5-9D24-BCB4FB6599FE"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9E943229-322D-C021-29DB-7BF045C802D7" name="TRUCK_PK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>DCF2456F-825C-A54D-56D9-DA6762AECD48</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DF292F70-CDA1-53A1-0A2A-722FEDFDA33B"/>
+<colUsage columnID="8AFC4A15-3E91-2882-8DAA-A7E1E6373F52"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="66C6535E-527E-7A9B-4A54-63595CFD2C80" name="TRUCK_REPORTv2_FK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>39A3C65F-4D48-D9C3-9066-8BE63BF78B60</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8AFC4A15-3E91-2882-8DAA-A7E1E6373F52"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

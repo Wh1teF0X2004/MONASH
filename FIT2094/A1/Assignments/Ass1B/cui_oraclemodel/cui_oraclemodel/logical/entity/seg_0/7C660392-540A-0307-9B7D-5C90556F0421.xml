@@ -1,0 +1,118 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7C660392-540A-0307-9B7D-5C90556F0421" name="TRUCK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-30 06:24:50 UTC</createdTime>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="truck_vin" id="783893A7-82E6-7F1B-FA6F-0E948FB3C8DD">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-30 06:25:30 UTC</createdTime>
+<commentInRDBMS><![CDATA[Collection Truck VIN]]></commentInRDBMS>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="truck_regonum" id="5906F0C5-4A1C-8142-724F-0674EE52434B">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-30 06:25:30 UTC</createdTime>
+<commentInRDBMS><![CDATA[Rego Number of authorised truck]]></commentInRDBMS>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="truck_make" id="AC2316A4-0599-C499-C8B6-359EB556B510">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-30 06:25:30 UTC</createdTime>
+<commentInRDBMS><![CDATA[Maker of authorised truck]]></commentInRDBMS>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="truck_model" id="034F680B-526E-E83F-0D76-18EAF4569A26">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-30 06:25:31 UTC</createdTime>
+<commentInRDBMS><![CDATA[Model of authorised truck]]></commentInRDBMS>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="truck_year" id="C5163A5E-9322-3BFF-2422-D07CCD974839">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-30 06:25:31 UTC</createdTime>
+<commentInRDBMS><![CDATA[Year of authorised truck]]></commentInRDBMS>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="collection_date" id="2105C863-32C5-D2C1-AA9D-F366B1E0F83E">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-01 17:14:44 UTC</createdTime>
+<commentInRDBMS><![CDATA[Date of Collection]]></commentInRDBMS>
+<generatorID>39A3C65F-4D48-D9C3-9066-8BE63BF78B60</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<referedAttribute>0CC0FE20-9E91-56D5-908A-81B8B807FAD5</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="DCF2456F-825C-A54D-56D9-DA6762AECD48" name="TRUCK PK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-30 06:28:53 UTC</createdTime>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>783893A7-82E6-7F1B-FA6F-0E948FB3C8DD</attributeRef>
+<attributeRef>2105C863-32C5-D2C1-AA9D-F366B1E0F83E</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,50 @@
+SQL> 
+SQL> --****PLEASE ENTER YOUR DETAILS BELOW****
+SQL> --sql_portfolio3_intermediate.sql
+SQL> 
+SQL> --Student ID: 33085625
+SQL> --Student Name: Foo Kai Yan
+SQL> --Unit Code: FIT2094
+SQL> --Applied Class No: Tutorial #1 (Monday) 11:00 - 13:00
+SQL> 
+SQL> 
+SQL> /*1*/
+SQL> -- PLEASE PLACE REQUIRED SQL STATEMENT FOR THIS PART HERE
+SQL> -- ENSURE that your query is formatted and has a semicolon
+SQL> -- (;) at the end of this answer
+SQL> SELECT tenant_no, tenant_title || '. ' || tenant_givname || ' ' || tenant_famname AS tenantname, 
+  2  COUNT(dam_no), TO_CHAR(SUM(dam_cost), '$9990.99')
+  3  FROM rent.rent NATURAL JOIN rent.tenant NATURAL JOIN rent.damage 
+  4  WHERE TO_CHAR(dam_datetime, 'yyyy') = 2022
+  5  GROUP BY tenant_no, tenant_title || '. ' || tenant_givname || ' ' || tenant_famname
+  6  ORDER BY TO_CHAR(SUM(dam_cost), '$9990.99') DESC, tenant_no;
+
+ TENANT_NO TENANTNAME                                       COUNT(DAM_NO) TO_CHAR(S
+---------- ------------------------------------------------ ------------- ---------
+      1286 Ms. Dacey Demchen                                            2  $1650.00
+      2720 Ms. Patricia Stroband                                        2  $1650.00
+      2524 Mr. Rich Suggate                                             1   $500.00
+      4971 Mr. Gustie Hugueville                                        1   $150.00
+
+SQL> 
+SQL> /*2*/
+SQL> -- PLEASE PLACE REQUIRED SQL STATEMENT FOR THIS PART HERE
+SQL> -- ENSURE that your query is formatted and has a semicolon
+SQL> -- (;) at the end of this answer
+SQL> SELECT tenant_no, tenant_title || '. ' || tenant_givname || ' ' || tenant_famname AS tenantname, 
+  2  prop_no, prop_address, COUNT(rent_agreement_no)
+  3  FROM rent.rent NATURAL JOIN rent.tenant NATURAL JOIN rent.property
+  4  WHERE UPPER(prop_address) LIKE UPPER('%Tasmania%')
+  5  GROUP BY tenant_no, tenant_title || '. ' || tenant_givname || ' ' || tenant_famname, prop_no, prop_address HAVING COUNT(rent_agreement_no) > 1
+  6  ORDER BY tenant_no;
+
+ TENANT_NO TENANTNAME                                          PROP_NO PROP_ADDRESS                                                                     COUNT(RENT_AGREEMENT_NO)
+---------- ------------------------------------------------ ---------- -------------------------------------------------------------------------------- ------------------------
+      1068 Mrs. Haily Cuardall                                    1984 30 Cox Street, Suite 036, 1100, Fadelland, Tasmania                                                     2
+      1907 Ms. Nadia Jerred                                       2022 536 Emma Meadow, Suite 340, 9498, Woodland, Tasmania                                                    2
+      4971 Mr. Gustie Hugueville                                  1965 4633 Leannon Crescent, Suite 962, 1791, Lake Evaside, Tasmania                                          2
+      9147 Mr. Melly Jerger                                       2117 9167 Heller Lane, Apt. 005, 3172, Alichester, Tasmania                                                  3
+
+SQL> 
+SQL> --Comment out SET ECHO and SPOOL commands before submitting your portfolio
+SQL> SPOOL OFF

@@ -1,0 +1,126 @@
+SQL> 
+SQL> --****PLEASE ENTER YOUR DETAILS BELOW****
+SQL> --sql_portfolio1.sql
+SQL> 
+SQL> --Student ID: 33085625
+SQL> --Student Name: Foo Kai Yan
+SQL> --Unit Code: FIT2094
+SQL> --Tutorial Class No: 
+SQL> 
+SQL> 
+SQL> /*Task 1: CREATE table POLICY and non FK constraints*/
+SQL> DROP TABLE policy CASCADE CONSTRAINTS PURGE;
+
+Error starting at line : 15 in command -
+DROP TABLE policy CASCADE CONSTRAINTS PURGE
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+SQL> 
+SQL> CREATE TABLE policy (
+  2      policy_id NUMBER(4) NOT NULL,
+  3      policy_startdate DATE NOT NULL,
+  4      policy_length NUMBER(4) NOT NULL,
+  5      prop_no NUMBER(4) NOT NULL,
+  6      policy_type_code CHAR(1) NOT NULL,
+  7      insurer_code CHAR(3) NOT NULL
+  8  );
+
+Table POLICY created.
+
+SQL> 
+SQL> COMMENT ON COLUMN policy.policy_id IS
+  2      'Policy unique identifier';
+
+Comment created.
+
+SQL> 
+SQL> COMMENT ON COLUMN policy.policy_startdate IS
+  2      'Policy start date';
+
+Comment created.
+
+SQL> 
+SQL> COMMENT ON COLUMN policy.policy_length IS
+  2      'Length of the policy in months';
+
+Comment created.
+
+SQL> 
+SQL> ALTER TABLE policy ADD CONSTRAINT uq_pol_id UNIQUE (policy_id);
+
+Table POLICY altered.
+
+SQL> 
+SQL> ALTER TABLE policy ADD CONSTRAINT ck_pol_len CHECK (policy_length >= 6);
+
+Table POLICY altered.
+
+SQL> 
+SQL> /*Task 1: Add FK constraints*/
+SQL> ALTER TABLE policy ADD CONSTRAINT prop_pol_fk FOREIGN KEY (prop_no) REFERENCES property (prop_no);
+
+Table POLICY altered.
+
+SQL> 
+SQL> ALTER TABLE policy ADD CONSTRAINT poltype_pol_fk FOREIGN KEY (policy_type_code) REFERENCES policy_type (policy_type_code);
+
+Table POLICY altered.
+
+SQL> 
+SQL> ALTER TABLE policy ADD CONSTRAINT inscode_pol_fk FOREIGN KEY (insurer_code) REFERENCES insurer (insurer_code);
+
+Table POLICY altered.
+
+SQL> 
+SQL> /*Task 2*/
+SQL> INSERT INTO policy VALUES 
+  2  (0001, to_date('21-Apr-2023','dd-Mon-yyyy'), 12, 7145, upper('B'), upper('LAS'));
+
+1 row inserted.
+
+SQL> 
+SQL> INSERT INTO policy VALUES 
+  2  (0002, to_date('21-Apr-2023','dd-Mon-yyyy'), 12, 9346, upper('B'), upper('LAS'));
+
+1 row inserted.
+
+SQL> 
+SQL> commit;
+
+Commit complete.
+
+SQL> 
+SQL> /*Task 3*/
+SQL> INSERT INTO policy VALUES 
+  2  (0003, to_date('1-May-2023','dd-Mon-yyyy'), 6, 7145, upper('B'), upper('LAS'));
+
+1 row inserted.
+
+SQL> 
+SQL> INSERT INTO policy VALUES 
+  2  (0004, to_date('1-May-2023','dd-Mon-yyyy'), 12, 7145, upper('C'), upper('LAS'));
+
+1 row inserted.
+
+SQL> 
+SQL> commit;
+
+Commit complete.
+
+SQL> 
+SQL> /*Task 4*/
+SQL> DELETE FROM policy WHERE policy_startdate = to_date('1-May-2023','dd-Mon-yyyy') and prop_no = 7145;
+
+2 rows deleted.
+
+SQL> 
+SQL> commit;
+
+Commit complete.
+
+SQL> 
+SQL> --Comment out SET ECHO and SPOOL commands before submitting your portfolio
+SQL> SPOOL OFF

@@ -1,0 +1,109 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="10DB48A1-114E-B005-330A-81F29B87A963" name="BINv1">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>1626E0BE-A026-C991-BB9F-199D564700E7</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="bin_size" id="00E80DE0-5BFD-745D-F85C-88C0FF0C5B0F">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[size of the bin]]></commentInRDBMS>
+<generatorID>F6C3B6B4-38AC-CA7C-8B86-C00025983860</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="bin_standard_cost" id="CF421F2D-2A53-73A0-1749-B4580034F544">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Cost of the standard bin]]></commentInRDBMS>
+<generatorID>C89BAA14-8E03-C0A2-9434-7FAF232E9E8C</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="waste_type_id" id="858687A2-B849-B35A-D814-1D605D94D6D2">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Waste Type ID]]></commentInRDBMS>
+<generatorID>CBAD784E-FA05-77E7-55F5-F195B461094E</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E6E61FA7-327A-E643-62DE-2C994F4543ED" referredColumn="3542F022-0BD8-D25B-5FE0-0883F3964260"/>
+</associations>
+</Column>
+<Column name="collection_date" id="C6B4ED69-EE18-C0A4-AAF5-0FF649A7BDB7">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Date of Collection]]></commentInRDBMS>
+<generatorID>75576996-46A5-7FAE-C231-1276BCB90C2D</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="33339545-86C7-AE57-635A-F1CEA1572B6C" referredColumn="DFFADF2E-6D7D-FDA5-9D24-BCB4FB6599FE"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="80BBA0FB-EC55-C231-FFE4-1684973A49DC" name="BINv1_PKv1">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>21124395-2AE9-B1B5-EDBD-621AF7A9586B</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="00E80DE0-5BFD-745D-F85C-88C0FF0C5B0F"/>
+<colUsage columnID="858687A2-B849-B35A-D814-1D605D94D6D2"/>
+<colUsage columnID="C6B4ED69-EE18-C0A4-AAF5-0FF649A7BDB7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FEF798B0-611F-5FB6-27DF-8343445C71C9" name="BINv1_REPORTv2_FK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>119309D6-0E60-3948-004A-23FEEC887FC9</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C6B4ED69-EE18-C0A4-AAF5-0FF649A7BDB7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6571478B-CE26-5BE0-8216-C3165610198B" name="BINv1_WASTEv1_FK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>3B6036E1-5E17-D7C0-57B6-79EF6D788B37</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="858687A2-B849-B35A-D814-1D605D94D6D2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

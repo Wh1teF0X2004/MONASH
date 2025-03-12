@@ -1,0 +1,116 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="DBFAED70-0F86-73F8-C06A-602A35812471" name="DRIVER">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-30 06:15:17 UTC</createdTime>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="dri_no" id="1DDF2306-630A-4A1E-434E-057FAEF10B32">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-30 06:16:39 UTC</createdTime>
+<commentInRDBMS><![CDATA[Driver Number]]></commentInRDBMS>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="dri_licence_num" id="0C5C4624-4FA5-D14A-A884-7C969550A577">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-30 06:16:52 UTC</createdTime>
+<commentInRDBMS><![CDATA[Licence Number]]></commentInRDBMS>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="dri_name" id="10C5DF5F-1C4E-1723-986E-364ED496AB89">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-30 06:16:52 UTC</createdTime>
+<commentInRDBMS><![CDATA[Name of Driver]]></commentInRDBMS>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="dri_dob" id="10BF5A1C-8DE3-1F07-2EF7-2D296EBBE9B7">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-30 06:16:53 UTC</createdTime>
+<commentInRDBMS><![CDATA[Date of Birth of the Driver]]></commentInRDBMS>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="dri_taxfile_num" id="E256688F-49FE-A807-0A42-17ACC7FA31EC">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-30 06:16:53 UTC</createdTime>
+<commentInRDBMS><![CDATA[Driver Taxfie Number]]></commentInRDBMS>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="dri_contact" id="D32425CF-4006-B80A-279D-1172B8EDA497">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-01 15:23:49 UTC</createdTime>
+<commentInRDBMS><![CDATA[Contact Number for driver]]></commentInRDBMS>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="C5688203-29AB-489F-0FEC-300F84134433" name="DRIVER PK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-30 06:21:16 UTC</createdTime>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<engineerTo>
+<item key="4D0F9BE9-1132-06C6-F245-1D467F0B4852" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>1DDF2306-630A-4A1E-434E-057FAEF10B32</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,776 @@
+---
+title: "FOOKAIYAN33085625"
+author: "Foo Kai Yan"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+> Student Name: Foo Kai Yan
+
+> Student ID: 33085625
+
+> Student Email: kfoo0012@student.monash.edu
+
+***
+
+## Statement: Generative AI was used in this assignment
+* ChatGPT was used to help to retify an error in generating barchart by providing potential errors and solution. Prompt used was the error message shown after code has been runned. Output was how the code was modified to change and add dataframe before the barchart was generated.
+* BingAI was used to bring an idea to code. Prompt used was to combine 2 columns described to the AI as an example and to combine the data in the cells under the columns to be within only 1 cell of a new column. Output was an example code.
+* ChatGPT was used to find on how t-value will affect the confidence of the coefficient as a predictor. Prompt used was 'how t-value is used to get the best predictor'. Output: Generally, any t-value greater than +2 or less than - 2 is acceptable. The higher the t-value, the greater the confidence we have in the coefficient as a predictor. Low t-values are indications of low reliability of the predictive power of that coefficient.
+
+### Set working directory
+```{r setWorkingDirectory}
+setwd("C:/Monash/FIT3152")
+```
+
+### Install and load the libraries used
+```{r libraries}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(factoextra)
+library(ggpubr)
+library(corrplot)
+library(reshape)
+```
+
+### Load data in PsyCoronaBaselineExtract.csv
+``` {r loadData}
+rm(list = ls())
+set.seed(33085625) 
+cvbase = read.csv("PsyCoronaBaselineExtract.csv", header = TRUE)
+cvbase <- cvbase[sample(nrow(cvbase), 40000), ] # 40000 rows
+```
+
+### Basic pre-processing and descriptive analysis for the corona dataset
+```{r asgn-dimension}
+dim(cvbase)
+```
+
+There is a total of 40,000 rows and 52 columns present in the dataset.
+
+```{r asgn-variables}
+names(cvbase)
+```
+
+The 52 variables included in the dataset are employstatus_1, employstatus_2, employstatus_3, employstatus_4, employstatus_5, employstatus_6, employstatus_7, employstatus_8, employstatus_9, employstatus_10, isoFriends_inPerson, isoOthPpl_inPerson, isoFriends_online, isoOthPpl_online, lone01, lone02, lone03, happy, lifeSat, MLQ, bor01, bor02, bor03, consp01, consp02, consp03, rankOrdLife_1, rankOrdLife_2, rankOrdLife_3, rankOrdLife_4, rankOrdLife_5, rankOrdLife_6, c19perBeh01, c19perBeh02, c19perBeh03, c19RCA01, c19RCA02, c19RCA03, coronaClose_1, coronaClose_2, coronaClose_3, coronaClose_4, coronaClose_5, coronaClose_6, gender, age, edu, coded_country, c19ProSo01, c19ProSo02, c19ProSo03 and c19ProSo04.
+
+```{r asgn-summary}
+# Summary is used to obtain basic summary of each column present in the dataset 'cvbase'
+# summary(cvbase)
+# str(cvbase)
+# The commented code above has been run in appendix section
+```
+
+From the code above, we can see that there is some missing values ("NA") present in the dataset. 
+
+Most missing values are found in the columns employstatus_1, employstatus_2, employstatus_3, employstatus_4, employstatus_5, employstatus_6, employstatus_7, employstatus_8, employstatus_9 and employstatus_10 as these few columns ask on the concept of the employment status of the participants. Each options represents different employment status the participants might be in. Participants might only choose 1 of the many options provided even though they are allowed to choose multiple.
+
+The Corona Proximity concept columns consisted of coronaClose_1, coronaClose_2, coronaClose_3, coronaClose_4, coronaClose_5 and coronaClose_6 which is also where the majority of the missing values are found in the dataset. These few columns ask the participants on whether they know people who have corona virus and each option represents different groups of people that have the corona virus and also a choice on not knowing anyone who have the corona virus.
+
+Most of the responses is numerical except for rankOrdLife_1, rankOrdLife_2, rankOrdLife_3, rankOrdLife_4, rankOrdLife_5 and rankOrdLife_6 which responses came in alphabets and also coded_country which is the participants response on the country they currently live in or the country they spent most of their time in.
+
+```{r age}
+participants_age = cvbase %>% group_by(age) %>% summarise(COUNT = n()) 
+participants_age <- as.data.frame(participants_age, row.names = NULL, optional = FALSE)
+participants_age_barchart = participants_age$COUNT
+names(participants_age_barchart) <- c("18-25", "25-34", "35-44", "45-54", "55-64", "65-75", "75-85", "85+", "NA")
+barplot(participants_age_barchart, main = "Count of Participants Age Group", xlab = "Age Group", ylab = "Participants Count", col = c("cornflowerblue", "cadetblue", "lightsteelblue3", "aliceblue", "skyblue", "azure2", "darkslategray3", "darkcyan", "darkblue"), border = "black", legend=TRUE)
+```
+
+The code above produce a bar chart that displayed the age range of the participants. From the bar chart, we can see that most participants are at the age range os 25-34 but the age range 18-25 is also quite high. This shows that most participants are teenagers or young adults and these people are the people that mostly spent their time on their devices.
+
+```{r pre-processing-1}
+# Add one new column to the dataset named employment_status
+# If employstatus_1 then under employment_status column put a 1
+# If employstatus_1 and employstatus_2 then under employment_status column put 1, 2
+# Once done, remove the columns for employstatus_1, employstatus_2, employstatus_3, employstatus_4, employstatus_5, employstatus_6, employstatus_7, employstatus_8, employstatus_9 and employstatus_10
+
+# Adding the new column and populate it
+employment_columns <- c("employstatus_1", "employstatus_2", "employstatus_3", "employstatus_4", "employstatus_5", "employstatus_6", "employstatus_7", "employstatus_8", "employstatus_9", "employstatus_10")
+cvbase$employment_status <- NA
+cvbase$employment_status <- apply(cvbase[, employment_columns], 1, function(row) {
+  not_na <- which(!is.na(row))
+  if (length(not_na) > 0) {
+    paste(not_na, collapse = ", ")
+  } else {
+    NA
+  }
+})
+head(cvbase$employment_status) 
+
+# Removing the columns
+cvbase = subset(cvbase, select = -c(employstatus_1, employstatus_2, employstatus_3, employstatus_4, employstatus_5, employstatus_6, employstatus_7, employstatus_8, employstatus_9, employstatus_10))
+```
+
+```{r pre-processing-2}
+# Add one new column to the dataset named corona_close
+# If coronaClose_1 then under corona_close column put a 1
+# If coronaClose_1 and coronaClose_2 then under corona_close column put 1, 2
+# Once done, remove the columns for coronaClose_1, coronaClose_2, coronaClose_3, coronaClose_4, coronaClose_5 and coronaClose_6
+
+# Adding the new column and populate it
+close_contact_column <- c("coronaClose_1", "coronaClose_2", "coronaClose_3", "coronaClose_4", "coronaClose_5", "coronaClose_6")
+cvbase$corona_close <- NA
+cvbase$corona_close <- apply(cvbase[, close_contact_column], 1, function(row) {
+  not_na <- which(!is.na(row))
+  if (length(not_na) > 0) {
+    paste(not_na, collapse = ", ")
+  } else {
+    NA
+  }
+})
+head(cvbase$corona_close)
+
+# Removing the columns
+cvbase = subset(cvbase, select = -c(coronaClose_1, coronaClose_2, coronaClose_3, coronaClose_4, coronaClose_5, coronaClose_6))
+```
+
+## Focus country by Student ID 33085625 is Malaysia
+
+```{r filter_msia}
+# Group 1 --> Participants from Malaysia
+msia = cvbase %>% filter(coded_country == "Malaysia")
+dim(msia)
+
+# Group 2 --> Participants not from Malaysia
+not_msia = cvbase %>% filter(coded_country != "Malaysia")
+dim(not_msia)
+```
+
+After filtering the newly processed dataset, another filter is applied to pinpoint the responses has its coded_country listed as Malaysia or not Malaysia. Not Malaysia includes all the other countries that is not named Malaysia like Japan, Russia and more.
+
+After future filtering, it is known that there is 548 rows and 38 columns for responses with focus country listed as Malaysia.
+Whereas on the other hand, there is 39452 rows and 38 columns for responses with focus country not listed as Malaysia.
+
+```{r group1_pro-social_attitudes}
+# head() is used to get a glimpse of the data
+covid19ProSo <- cvbase[, c("coded_country", "c19ProSo01", "c19ProSo02", "c19ProSo03", "c19ProSo04")]
+head(covid19ProSo)
+
+prosocial_msia <- covid19ProSo[covid19ProSo$coded_country == "Malaysia", ]
+head(prosocial_msia)
+```
+
+First, before filtering the pro-social attitudes of the participants according to country, the columns that store participants' country and their pro-social attitudes is moved to a new dataframe 'covid19ProSo' for easy view of the participants' responses. This is also to not touch on the newly processed dataset to prevent any mistakes done that would change the original dataset.
+
+prosocial_msia stores the Malaysian participants' pros-social attitudes responses.
+
+```{r group2_pro-social_attitudes}
+covid19ProSo <- cvbase[, c("coded_country", "c19ProSo01", "c19ProSo02", "c19ProSo03", "c19ProSo04")]
+
+prosocial_not_msia <- covid19ProSo[covid19ProSo$coded_country != "Malaysia", ]
+head(prosocial_not_msia)
+```
+
+prosocial_not_msia stores the non-Malaysian participants' pros-social attitudes responses.
+
+```{r pro-social_attitudes}
+# Malaysia Pro-Social Attitude
+paste("Malaysia Pro-Social Attitude")
+# msia c19ProSo01
+paste("c19ProSo01")
+c19ProSo01_count_values <- table(prosocial_msia$c19ProSo01)
+c19ProSo01_count_values
+
+# msia c19ProSo02
+paste("c19ProSo02")
+c19ProSo02_count_values <- table(prosocial_msia$c19ProSo02)
+c19ProSo02_count_values
+
+# msia c19ProSo03
+paste("c19ProSo03")
+c19ProSo03_count_values <- table(prosocial_msia$c19ProSo03)
+c19ProSo03_count_values
+
+# msia c19ProSo04
+paste("c19ProSo04")
+c19ProSo04_count_values <- table(prosocial_msia$c19ProSo04)
+c19ProSo04_count_values
+
+# Non-Malaysia Pro-Social Attitude
+paste("Non-Malaysia Pro-Social Attitude")
+# not msia c19ProSo01
+paste("c19ProSo01")
+c19ProSo01_count_values <- table(prosocial_not_msia$c19ProSo01)
+c19ProSo01_count_values
+
+# not msia c19ProSo02
+paste("c19ProSo02")
+c19ProSo02_count_values <- table(prosocial_not_msia$c19ProSo02)
+c19ProSo02_count_values
+
+# not msia c19ProSo03
+paste("c19ProSo03")
+c19ProSo03_count_values <- table(prosocial_not_msia$c19ProSo03)
+c19ProSo03_count_values
+
+# not msia c19ProSo04
+paste("c19ProSo04")
+c19ProSo04_count_values <- table(prosocial_not_msia$c19ProSo04)
+c19ProSo04_count_values
+```
+
+From the code above, we can see that there is a total of 7 kinds of responses from the range of -3 to 3.
+The 7 types of responses are Strongly disagree, Disagree, Somewhat disagree, Neither agree nor disagree, Somewhat agree, Agree, Strongly agree.
+If the response is -3, then the response is "Strongly disagree".
+If the response is -2, then the response is "Disagree".
+If the response is -1, then the response is "Somewhat disagree".
+If the response is 0, then the response is "Neither agree nor disagree".
+If the response is 1, then the response is "Somewhat agree".
+If the response is 2, then the response is "Agree".
+If the response is 3, then the response is "Strongly agree".
+
+We can see that from c19ProSo01 column, responses from Malaysia is mostly at '2' where 213 "Agree" to the statement that "I am willing to help others who suffer from coronavirus." We can also see that responses by participants not from Malaysia also mostly chose '2' whereby the 11552 participants also "Agree" to the statement that "I am willing to help others who suffer from coronavirus."
+
+Next, it would be the c19ProSo02 column. 221 participants from Malaysia responded '2' which is that they "Agree" to the statement that "I am willing to make donations to help others that suffer from coronavirus." We can also see that responses by participants not from Malaysia also mostly chose '2' whereby the 10065 participants also "Agree" to the statement that "I am willing to make donations to help others that suffer from coronavirus."
+
+From the c19ProSo03 column, 152 participants from Malaysia responded '1' where they "Somewhat agree" to the statement that "I am willing to protect vulnerable groups from coronavirus even at my own expense." There is a slight difference here whereby 8531 participants not from Malaysia responded that they "Agree" to the statement "I am willing to protect vulnerable groups from coronavirus even at my own expense." But there are also a high number of participants not from Malaysia responded that they "Neither agree nor disagree" to the same statement.  
+
+Last but not least, the c19ProSo04 column. 166 participants from Malaysia responded '2' which is that they "Agree" to the statement that "I am willing to make personal sacrifices to prevent the spread of coronavirus." Most of the non-Malaysian participants which is 11755 participants also have the same response.
+
+```{r msia_correlation}
+msia_corr <- msia
+msia_corr = subset(msia_corr, select = -c(rankOrdLife_1, rankOrdLife_2, rankOrdLife_3, rankOrdLife_4, rankOrdLife_5, rankOrdLife_6, coded_country, employment_status, corona_close))
+
+# Compute the correlation matrix
+cor_matrix <- cor(msia_corr, use = "complete.obs")  # Omit NA values
+
+# Create a correlation plot
+corrplot(cor_matrix, method = "color", order = "AOE", tl.cex = 0.7, tl.col = "black",
+         title = "Malaysia Correlation Plot", type = "upper")
+
+# Add a legend
+legend("bottomleft", legend = c("Low correlation", "High correlation"),
+       fill = c("white", "blue"), bty = "n", cex = 0.8, title = "Correlation Level")
+```
+
+Above presents the correlation plot for each of the predictors for Malaysia.
+
+```{r best_predictors_msia}
+str(msia)
+msia_q2b <- msia
+msia_q2b = subset(msia_q2b, select = -c(rankOrdLife_1, rankOrdLife_2, rankOrdLife_3, rankOrdLife_4, rankOrdLife_5, rankOrdLife_6, coded_country, employment_status, corona_close))
+
+
+# Best predictor for c19ProSo01
+# Fit the linear model for c19ProSo01
+c19ProSo01_best <- lm(c19ProSo01 ~., data = msia_q2b)
+# Extract coefficients and p-values
+c19ProSo01_best_summary <- summary(c19ProSo01_best)$coefficients
+# Find significant predictors (p-value < 0.05)
+c19ProSo01_significant_predictors <- c19ProSo01_best_summary[c19ProSo01_best_summary[, "Pr(>|t|)"] < 0.05, ]
+# Sort predictors by absolute coefficient magnitude (significant)
+c19ProSo01_strongest_predictors <- c19ProSo01_significant_predictors[order(abs(c19ProSo01_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+# Display the 2 highest/strongest predictors (those with ***)
+c19ProSo01_strongest_predictors[1:2, ]
+# Get the R-Squared value
+summary(c19ProSo01_best)
+
+# Best predictor for c19ProSo02
+c19ProSo02_best <- lm(c19ProSo02 ~., data = msia_q2b)
+c19ProSo02_best_summary <- summary(c19ProSo02_best)$coefficients
+c19ProSo02_significant_predictors <- c19ProSo02_best_summary[c19ProSo02_best_summary[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo02_strongest_predictors <- c19ProSo02_significant_predictors[order(abs(c19ProSo02_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo02_strongest_predictors[1:2, ]
+summary(c19ProSo02_best)
+
+# Best predictor for c19ProSo03
+c19ProSo03_best <- lm(c19ProSo03 ~., data = msia_q2b)
+c19ProSo03_best_summary <- summary(c19ProSo03_best)$coefficients
+c19ProSo03_significant_predictors <- c19ProSo03_best_summary[c19ProSo03_best_summary[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo03_strongest_predictors <- c19ProSo03_significant_predictors[order(abs(c19ProSo03_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo03_strongest_predictors[1:2, ]
+summary(c19ProSo03_best)
+
+# Best predictor for c19ProSo04
+c19ProSo04_best <- lm(c19ProSo04 ~., data = msia_q2b)
+c19ProSo04_best_summary <- summary(c19ProSo04_best)$coefficients
+c19ProSo04_significant_predictors <- c19ProSo04_best_summary[c19ProSo04_best_summary[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo04_strongest_predictors <- c19ProSo04_significant_predictors[order(abs(c19ProSo04_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo04_strongest_predictors[1:2, ]
+summary(c19ProSo04_best)
+```
+
+Due to some of the variables having data of not being non-numerical type, the non-numerical columns are removed so a linear regression model (lm) could be used to determine which of the variables are the best predictors by the number of * present at the most right-side as the more * there is on the rightmost side the more significant the variables are. 
+
+The linear model generated for c19ProSo01 have an R-Square value is 0.3225 which means that 32.25% of the participants from Malaysia can be explained by the independent variable when these participants from Malaysia are willing to help others who suffered from Covid19. This R-squared value of 0.3225 strongly suggests that this linear model's ability to predict is somewhat limited as while it does provide some insight, it's not highly reliable but it still have some significant predictive ability.
+
+The linear model generated for c19ProSo02 have an R-Square value is 0.3834 which means that 38.34% of the participants from Malaysia can be explained by the independent variable when these participants from Malaysia are willing to help others who suffered from Covid19 in a form of donations. This R-squared value of 0.3834 strongly suggests that this linear model's ability to predict is somewhat limited as while it does provide some insight, it's not highly reliable but it have a more significant predictive ability than the linear model for c19ProSo01.
+
+The linear model generated for c19ProSo03 have an R-Square value is 0.4369 which means that 43.69% of the participants from Malaysia can be explained by the independent variable when these participants from Malaysia are willing to protect others who suffered from Covid19 with their own expenses. This R-squared value of 0.4369 strongly suggests that this linear model's ability to predict is somewhat moderate where it can explain almost half of the variability observed.
+
+The linear model generated for c19ProSo04 have an R-Square value is 0.3023 which means that 30.23% of the participants from Malaysia can be explained by the independent variable when these participants from Malaysia are willing to make personal sacrifice to prevent spread of Covid19 virus. This R-squared value of 0.3023 strongly suggests that this linear model's ability to predict is very limited and the lowest between all 4 pro-social attribute.
+
+When the linear model was generated for c19ProSo01 there were more than 1 predictors and/or variables that have *** present so indices was used to get the top 2 best predictors and/or variables for each c19ProSo01, c19ProSo02, c19ProSo03, c19ProSo04. 2 best predictors was displayed as if only 1 was displayed, there will be no variable name shown at output.
+
+For the focus country Malaysia, for c19ProSo01, the best predictor is c19ProSo02 as it has the lowest p-value when compared to the other variables/predictors present. The p_value is 2.637061e-13 which is extremely small as it is smaller than 0.05 which strongly suggest that c19ProSo02 is significantly related to c19ProSo01.
+
+For the focus country Malaysia, for c19ProSo02, the best predictor is c19ProSo03 as it has the lowest p-value when compared to the other variables/predictors present. The p_value is 1.508749e-14 which is extremely small as it is smaller than 0.05 which strongly suggest that c19ProSo03 is significantly related to c19ProSo02.
+
+For the focus country Malaysia, for c19ProSo03, the best predictor is c19ProSo04. c19ProSo04 is a better predictor than c19ProSo02 because its coefficient estimate is higher so it indicated that c19ProSo04 has a stronger impact on c19ProSo03 than c19ProSo02 does impact on c19ProSo03. The t-value for c19ProSo04 is higher than that for c19ProSo02 and a higher t value indicates that the greater the confidence in c19ProSo04 as a predictor than c19ProSo02. 
+
+For the focus country Malaysia, for c19ProSo04, the best predictor is c19ProSo03. c19ProSo03 is a better predictor than c19RCA03 because its coefficient estimate is higher so it indicated that c19ProSo03 has a stronger impact on c19ProSo04 than c19RCA03 does impact on c19ProSo04. The t-value for c19ProSo03 is higher than that for c19RCA03 and a higher t value indicates that the greater the confidence in c19ProSo04 as a predictor than c19RCA03. 
+
+```{r not_msia_correlation}
+not_msia_corr <- not_msia
+not_msia_corr = subset(not_msia_corr, select = -c(rankOrdLife_1, rankOrdLife_2, rankOrdLife_3, rankOrdLife_4, rankOrdLife_5, rankOrdLife_6, coded_country, employment_status, corona_close))
+
+# Compute the correlation matrix
+cor_matrix <- cor(not_msia_corr, use = "complete.obs")  # Omit NA values
+
+# Create a correlation plot
+corrplot(cor_matrix, method = "color", order = "AOE", tl.cex = 0.7, tl.col = "black",
+         title = "Other Countries (Not including Malaysia) Correlation Plot", type = "upper")
+
+# Add a legend
+legend("bottomleft", legend = c("Low correlation", "High correlation"),
+       fill = c("white", "blue"), bty = "n", cex = 0.8, title = "Correlation Level")
+```
+
+```{r best_predictors_not_msia}
+str(not_msia)
+msia_q2c <- not_msia
+msia_q2c = subset(msia_q2c, select = -c(rankOrdLife_1, rankOrdLife_2, rankOrdLife_3, rankOrdLife_4, rankOrdLife_5, rankOrdLife_6, coded_country, employment_status, corona_close))
+
+# Best predictor for c19ProSo01
+c19ProSo01_best <- lm(c19ProSo01 ~., data = msia_q2c)
+c19ProSo01_best_summary <- summary(c19ProSo01_best)$coefficients
+c19ProSo01_significant_predictors <- c19ProSo01_best_summary[c19ProSo01_best_summary[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo01_strongest_predictors <- c19ProSo01_significant_predictors[order(abs(c19ProSo01_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo02_strongest_predictors[1:2, ]
+summary(c19ProSo01_best)
+
+# Best predictor for c19ProSo02
+c19ProSo02_best <- lm(c19ProSo02 ~., data = msia_q2c)
+c19ProSo02_best_summary <- summary(c19ProSo02_best)$coefficients
+c19ProSo02_significant_predictors <- c19ProSo02_best_summary[c19ProSo02_best_summary[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo02_strongest_predictors <- c19ProSo02_significant_predictors[order(abs(c19ProSo02_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo02_strongest_predictors[1:2, ]
+summary(c19ProSo02_best)
+
+# Best predictor for c19ProSo03
+c19ProSo03_best <- lm(c19ProSo03 ~., data = msia_q2c)
+c19ProSo03_best_summary <- summary(c19ProSo03_best)$coefficients
+c19ProSo03_significant_predictors <- c19ProSo03_best_summary[c19ProSo03_best_summary[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo03_strongest_predictors <- c19ProSo03_significant_predictors[order(abs(c19ProSo03_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo03_strongest_predictors[1:2, ]
+summary(c19ProSo03_best)
+
+# Best predictor for c19ProSo04
+c19ProSo04_best <- lm(c19ProSo04 ~., data = msia_q2c)
+c19ProSo04_best_summary <- summary(c19ProSo04_best)$coefficients
+c19ProSo04_significant_predictors <- c19ProSo04_best_summary[c19ProSo04_best_summary[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo04_strongest_predictors <- c19ProSo04_significant_predictors[order(abs(c19ProSo04_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo04_strongest_predictors[1:2, ]
+summary(c19ProSo04_best)
+```
+The linear model generated for c19ProSo01 have an R-Square value is 0.3527 which means that 35.27% of the participants not from Malaysia can be explained by the independent variable when these participants not from Malaysia are willing to help others who suffered from Covid19. This R-squared value of 0.3527 strongly suggests that this linear model's ability to predict is somewhat limited as while it does provide some insight, it's not highly reliable but it still have some significant predictive ability.
+
+The linear model generated for c19ProSo01 have an R-Square value is 0.383 which means that 38.3% of the participants not from Malaysia can be explained by the independent variable when these participants not from Malaysia are willing to help others who suffered from Covid19 in a form of donations. This R-squared value of 0.383 strongly suggests that this linear model's ability to predict is somewhat limited as while it does provide some insight, it's not highly reliable but it have a more significant predictive ability than the linear model for c19ProSo01.
+
+The linear model generated for c19ProSo03 have an R-Square value is 0.4475 which means that 44.75% of the participants not from Malaysia can be explained by the independent variable when these participants not from Malaysia are willing to protect others who suffered from Covid19 with their own expenses. This R-squared value of 0.4475 strongly suggests that this linear model's ability to predict is somewhat moderate where it can explain almost half of the variability observed.
+
+The linear model generated for c19ProSo04 have an R-Square value is 0.3213 which means that 32.13% of the participants not from Malaysia can be explained by the independent variable when these participants not from Malaysia are willing to make personal sacrifice to prevent spread of Covid19 virus. This R-squared value of 0.3213 strongly suggests that this linear model's ability to predict is very limited and the lowest between all 4 pro-social attribute.
+
+For the focus country Malaysia, for c19ProSo01, the best predictor is c19ProSo03 as it has the lowest p-value when compared to the other variables/predictors present. The p_value is 1.508749e-14 which is extremely small as it is smaller than 0.05 which strongly suggest that c19ProSo03 is significantly related to c19ProSo01.
+
+For the focus country Malaysia, for c19ProSo02, the best predictor is c19ProSo01. The reason on why c19ProSo03 is not the better predictor than c19ProSo01 other than the ordering is that c19ProSo03 have a larger t value than c19ProSo01 which shows that c19ProSo03 have a less stable relationship with c19ProSo02 compared to c19ProSo01 which have a lower t value which indicated that c19ProSo01 have a more stable variable relationship with c19ProSo02. The t value of c19ProSo01 is 53.75890 which is smaller than the t value of c19ProSo03 which is 77.95488.
+
+For the focus country Malaysia, for c19ProSo03, the best predictor is c19ProSo01. The reason on why c19ProSo02 is not the better predictor than c19ProSo01 other than the ordering is that c19ProSo02 have a larger t value than c19ProSo01 which shows that c19ProSo02 have a less stable relationship with c19ProSo03 compared to c19ProSo01 which have a lower t value which indicated that c19ProSo01 have a more stable variable relationship with c19ProSo03. The t value of c19ProSo01 is 68.26182 which is smaller than the t value of c19ProSo02 which is 77.95488.
+
+For the focus country Malaysia, for c19ProSo04, the best predictor is c19ProSo03 as it has the lowest p-value when compared to the other variables/predictors present. The p_value is 0.000000e+00 which is extremely small as it is smaller than 0.05 which strongly suggest that c19ProSo03 is significantly related to c19ProSo04.
+
+```{r identify_unique_countries}
+unique(cvbase$coded_country)
+```
+
+From the output above we can see that there is 113 unique countries present in the dataset provided to complete this assignment.
+
+```{r identify_similar_countries}
+# Load in external dataset
+corona = read.csv("2021-GHS-Index-April-2022.csv", header = TRUE)
+
+# Remove NA from corona dataset
+corona <- na.omit(corona)
+
+# Identify unique countries
+# Refer to appendix
+
+# Identify potential indicators
+# Refer to appendix
+```
+
+The social, economic, health and political indicators used to identify similar countries from Malaysia is listed down as below with the column number and what are the data recorded in each of the columns.
+
+### Indicators used:
+* [59] "X1.6.1..Vaccination.rates"
+* [98] "X2.5.1a..National.support.to.conduct.contact.tracing.in.the.event.of.a.public.health.emergency" 
+* [270] "X6.2..Socio.economic.resilience" 
+* [309] "X6.5.3..Public.healthcare.spending.levels.per.capita"
+* [311] "X6.5.4..Trust.in.medical.and.health.advice" 
+
+```{r kmeans_clustering}
+# Columns 59, 98, 270, 309 and 311 from the corona dataset is to be used in the clustering process
+corona_kmeans <- kmeans(corona[, c(59, 98, 270, 309, 311)], 6, nstart = 75)
+corona_kmeans_cluster <- corona_kmeans$cluster
+
+# Dataframe is used to store the countries and the cluster numbers
+cluster_df <- data.frame(Value = as.vector(t(corona$Country)), Cluster = corona_kmeans_cluster)
+head(cluster_df)
+
+# Find which cluster is the country Malaysia is in
+msia_cluster = unique(subset(cluster_df, grepl("Malaysia", Value))$Cluster)
+msia_cluster
+
+# Identify all countries in the same cluster as Malaysia
+unique(subset(cluster_df, grepl(msia_cluster, Cluster))$Value)
+```
+
+There is 39 countries in the same cluster as Malaysia which is cluster 1. The 5 similar countries selected are Hungary, Mongolia, Philippines, Poland and Saudi Arabia as these 5 countries are the countries positioned near Malaysia within the cluster and these countries also exist in the 'cvbase' dataset.
+
+K-means clustering is used on the external dataset 'corona' with the columns 59, 98, 270, 309 and 311 is used in the clustering process. Columns 59, 98, 270, 309 and 311 from the corona dataset are the indicators selected from before. Then a dataframe is used to store the countries and the cluster numbers for easy manipulation of data on the later step. From the dataframe, I then find which cluster is the country Malaysia is in and Malaysia is in the first cluster. After that, I identify all countries in the same cluster as Malaysia as these countries are similar to Malaysia for them to end up in the same cluster as Malaysia. Below is a plot on the cluster for visualisation purposes.
+
+```{r cluster_visualisation}
+# Plot out the kmeans cluster
+fviz_cluster(list(data = corona[, c(59, 98, 270, 309, 311)], cluster = corona_kmeans_cluster))
+```
+
+```{r hungary}
+hungary = cvbase %>% filter(coded_country == "Hungary")
+hungary <- subset(hungary, select = -c(rankOrdLife_1, rankOrdLife_2, rankOrdLife_3, rankOrdLife_4, rankOrdLife_5, rankOrdLife_6, coded_country, employment_status, corona_close))
+
+# Linear Model
+hungary_lm_1 <- lm(c19ProSo01 ~., data = hungary)
+# Best Predictors
+# c19ProSo01
+c19ProSo01_coefficients <- summary(hungary_lm_1)$coefficients
+c19ProSo01_significant_predictors <- c19ProSo01_coefficients[c19ProSo01_coefficients[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo01_best_predictors <- c19ProSo01_significant_predictors[order(abs(c19ProSo01_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo01_best_predictors[1:2, ]
+# Plot responses from Hungary
+hungary_plot_1 <- qplot(seq_along(hungary$c19ProSo01), hungary$c19ProSo01, main = "Participants Responses for c19ProSo01 for Hungary", xlab = "c19ProSo01", ylab = "c19ProSo01") + geom_smooth(method = "loess", formula = y ~ x, na.rm = TRUE)
+
+# c19ProSo02
+hungary_lm_2 <- lm(c19ProSo02 ~., data = hungary)
+c19ProSo02_coefficients <- summary(hungary_lm_2)$coefficients
+c19ProSo02_significant_predictors <- c19ProSo02_coefficients[c19ProSo02_coefficients[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo02_best_predictors <- c19ProSo02_significant_predictors[order(abs(c19ProSo02_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo01_best_predictors[1:2, ]
+hungary_plot_2 <- qplot(seq_along(hungary$c19ProSo02), hungary$c19ProSo02, main = "Participants Responses for c19ProSo02 for Hungary", xlab = "c19ProSo02", ylab = "c19ProSo02") + geom_smooth(method = "loess", formula = y ~ x, na.rm = TRUE)
+
+# c19ProSo03
+hungary_lm_3 <- lm(c19ProSo03 ~., data = hungary)
+c19ProSo03_coefficients <- summary(hungary_lm_3)$coefficients
+c19ProSo03_significant_predictors <- c19ProSo03_coefficients[c19ProSo03_coefficients[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo03_best_predictors <- c19ProSo03_significant_predictors[order(abs(c19ProSo03_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo03_best_predictors[1:2, ]
+hungary_plot_3 <- qplot(seq_along(hungary$c19ProSo03), hungary$c19ProSo03, main = "Participants Responses for c19ProSo03 for Hungary", xlab = "c19ProSo03", ylab = "c19ProSo03") + geom_smooth(method = "loess", formula = y ~ x, na.rm = TRUE)
+
+# c19ProSo04
+hungary_lm_4 <- lm(c19ProSo04 ~., data = hungary)
+c19ProSo04_coefficients <- summary(hungary_lm_4)$coefficients
+c19ProSo04_significant_predictors <- c19ProSo04_coefficients[c19ProSo04_coefficients[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo04_best_predictors <- c19ProSo04_significant_predictors[order(abs(c19ProSo04_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo04_best_predictors[1:2, ]
+hungary_plot_4 <- qplot(seq_along(hungary$c19ProSo04), hungary$c19ProSo04, main = "Participants Responses for c19ProSo04 for Hungary", xlab = "c19ProSo04", ylab = "c19ProSo04") + geom_smooth(method = "loess", formula = y ~ x, na.rm = TRUE)
+
+ggarrange(hungary_plot_1, hungary_plot_2, hungary_plot_3, hungary_plot_4, ncol = 2, nrow = 2)
+```
+For c19ProSo01, participants from Hungary responses fluctuated between 0 and 1, which means that most participants from Hungary either "Neither agree nor disagree" or "Somewhat agree" to the statement that "I am willing to help others who suffer from coronavirus." 
+
+For c19ProSo02, participants from Hungary responded 0, which means that most participants from Hungary "Neither agree nor disagree" to the statement that "I am willing to make donations to help others that suffer from coronavirus."
+
+For c19ProSo03, participants from Hungary responses fluctuated between 0 and 1, which means that most participants from Hungary either "Neither agree nor disagree" or "Somewhat agree" to the statement that "I am willing to protect vulnerable groups from coronavirus even at my own expense."
+
+For c19ProSo04, participants from Hungary responses fluctuated between 1 and 2, which means that most participants from Hungary either "Somewhat agree" or "Agree" to the statement that "I am willing to make personal sacrifices to prevent the spread of coronavirus."
+
+### Best Predictors for Hungary: 
+* The best predictor for c19ProSo01 is c19ProSo02 with a p-value of 1.110286e-12 which is less than 0.05.
+* The best predictor for c19ProSo02 is c19ProSo02 with a p-value of 1.110286e-12 which is less than 0.05.
+* The best predictor for c19ProSo03 is c19ProSo01 with a p-value of 1.277359e-06 which is less than 0.05.
+* The best predictor for c19ProSo04 is c19ProSo02 with a p-value of 3.373682e-06 which is less than 0.05.
+
+```{r iran}
+iran = cvbase %>% filter(coded_country == "Iran")
+iran <- subset(iran, select = -c(rankOrdLife_1, rankOrdLife_2, rankOrdLife_3, rankOrdLife_4, rankOrdLife_5, rankOrdLife_6, coded_country, employment_status, corona_close))
+
+iran_lm_1 <- lm(c19ProSo01 ~., data = iran)
+c19ProSo01_coefficients <- summary(iran_lm_1)$coefficients
+c19ProSo01_significant_predictors <- c19ProSo01_coefficients[c19ProSo01_coefficients[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo01_best_predictors <- c19ProSo01_significant_predictors[order(abs(c19ProSo01_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo01_best_predictors[1:2, ]
+iran_plot_1 <- qplot(seq_along(iran$c19ProSo01), iran$c19ProSo01, main = "Participants Responses for c19ProSo01 for Iran", xlab = "c19ProSo01", ylab = "c19ProSo01") + geom_smooth(method = "loess", formula = y ~ x, na.rm = TRUE)
+
+iran_lm_2 <- lm(c19ProSo02 ~., data = iran)
+c19ProSo02_coefficients <- summary(iran_lm_2)$coefficients
+c19ProSo02_significant_predictors <- c19ProSo02_coefficients[c19ProSo02_coefficients[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo02_best_predictors <- c19ProSo02_significant_predictors[order(abs(c19ProSo02_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo02_best_predictors[1:2, ]
+iran_plot_2 <- qplot(seq_along(iran$c19ProSo02), iran$c19ProSo02, main = "Participants Responses for c19ProSo02 for Iran", xlab = "c19ProSo02", ylab = "c19ProSo02") + geom_smooth(method = "loess", formula = y ~ x, na.rm = TRUE)
+
+iran_lm_3 <- lm(c19ProSo03 ~., data = iran)
+c19ProSo03_coefficients <- summary(iran_lm_3)$coefficients
+c19ProSo03_significant_predictors <- c19ProSo03_coefficients[c19ProSo03_coefficients[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo03_best_predictors <- c19ProSo03_significant_predictors[order(abs(c19ProSo03_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo03_best_predictors[1:2, ]
+iran_plot_3 <- qplot(seq_along(iran$c19ProSo03), iran$c19ProSo03, main = "Participants Responses for c19ProSo03 for Iran", xlab = "c19ProSo03", ylab = "c19ProSo03") + geom_smooth(method = "loess", formula = y ~ x, na.rm = TRUE)
+
+iran_lm_4 <- lm(c19ProSo04 ~., data = iran)
+c19ProSo04_coefficients <- summary(iran_lm_4)$coefficients
+c19ProSo04_significant_predictors <- c19ProSo04_coefficients[c19ProSo04_coefficients[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo04_best_predictors <- c19ProSo04_significant_predictors[order(abs(c19ProSo04_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo04_best_predictors[1:2, ]
+iran_plot_4 <- qplot(seq_along(iran$c19ProSo04), iran$c19ProSo04, main = "Participants Responses for c19ProSo04 for Iran", xlab = "c19ProSo04", ylab = "c19ProSo04") + geom_smooth(method = "loess", formula = y ~ x, na.rm = TRUE)
+
+ggarrange(iran_plot_1, iran_plot_2, iran_plot_3, iran_plot_4, ncol = 2, nrow = 2)
+```
+
+For c19ProSo01, participants from Iran responses fluctuated between 0 and 1, which means that most participants from Iran either "Neither agree nor disagree" or "Somewhat agree" to the statement that "I am willing to help others who suffer from coronavirus." 
+
+For c19ProSo02, participants from Iran responded 0, which means that most participants from Iran "Neither agree nor disagree" to the statement that "I am willing to make donations to help others that suffer from coronavirus."
+
+For c19ProSo03, participants from Iran responded 0 which means that most participants from Iran "Neither agree nor disagree" to the statement that "I am willing to protect vulnerable groups from coronavirus even at my own expense."
+
+For c19ProSo04, participants from Iran responded 1, which means that most participants from Iran "Somewhat agree" to the statement that "I am willing to make personal sacrifices to prevent the spread of coronavirus."
+
+### Best Predictors for Iran: 
+* The best predictor for c19ProSo01 is consp02 with a p-value of 0.001033475 which is less than 0.05.
+* The best predictor for c19ProSo02 is c19ProSo03 with a p-value of 3.103176e-23 which is less than 0.05.
+* The best predictor for c19ProSo03 is c19ProSo02 with a p-value of 3.103176e-23 which is less than 0.05.
+* The best predictor for c19ProSo04 is c19ProSo01 with a p-value of 0.01582383 which is less than 0.05.
+
+```{r philippines}
+philippines = cvbase %>% filter(coded_country == "Philippines")
+philippines <- subset(philippines, select = -c(rankOrdLife_1, rankOrdLife_2, rankOrdLife_3, rankOrdLife_4, rankOrdLife_5, rankOrdLife_6, coded_country, employment_status, corona_close))
+
+philippines_lm_1 <- lm(c19ProSo01 ~., data = philippines)
+c19ProSo01_coefficients <- summary(philippines_lm_1)$coefficients
+c19ProSo01_significant_predictors <- c19ProSo01_coefficients[c19ProSo01_coefficients[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo01_best_predictors <- c19ProSo01_significant_predictors[order(abs(c19ProSo01_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo01_best_predictors[1:2, ]
+philippines_plot_1 <- qplot(seq_along(philippines$c19ProSo01), philippines$c19ProSo01, main = "Participants Responses for c19ProSo01 for Philippines", xlab = "c19ProSo01", ylab = "c19ProSo01") + geom_smooth(method = "loess", formula = y ~ x, na.rm = TRUE)
+
+philippines_lm_2 <- lm(c19ProSo02 ~., data = philippines)
+c19ProSo02_coefficients <- summary(philippines_lm_2)$coefficients
+c19ProSo02_significant_predictors <- c19ProSo02_coefficients[c19ProSo02_coefficients[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo02_best_predictors <- c19ProSo02_significant_predictors[order(abs(c19ProSo02_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo02_best_predictors[1:2, ]
+philippines_plot_2 <- qplot(seq_along(philippines$c19ProSo02), philippines$c19ProSo02, main = "Participants Responses for c19ProSo02 for Philippines", xlab = "c19ProSo02", ylab = "c19ProSo02") + geom_smooth(method = "loess", formula = y ~ x, na.rm = TRUE)
+
+philippines_lm_3 <- lm(c19ProSo03 ~., data = philippines)
+c19ProSo03_coefficients <- summary(philippines_lm_3)$coefficients
+c19ProSo03_significant_predictors <- c19ProSo03_coefficients[c19ProSo03_coefficients[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo03_best_predictors <- c19ProSo03_significant_predictors[order(abs(c19ProSo03_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo03_best_predictors[1:2, ]
+philippines_plot_3 <- qplot(seq_along(philippines$c19ProSo03), philippines$c19ProSo03, main = "Participants Responses for c19ProSo03 for Philippines", xlab = "c19ProSo03", ylab = "c19ProSo03") + geom_smooth(method = "loess", formula = y ~ x, na.rm = TRUE)
+
+philippines_lm_4 <- lm(c19ProSo04 ~., data = philippines)
+c19ProSo04_coefficients <- summary(philippines_lm_4)$coefficients
+c19ProSo04_significant_predictors <- c19ProSo04_coefficients[c19ProSo04_coefficients[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo04_best_predictors <- c19ProSo04_significant_predictors[order(abs(c19ProSo04_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo04_best_predictors[1:2, ]
+philippines_plot_4 <- qplot(seq_along(philippines$c19ProSo04), philippines$c19ProSo04, main = "Participants Responses for c19ProSo04 for Philippines", xlab = "c19ProSo04", ylab = "c19ProSo04") + geom_smooth(method = "loess", formula = y ~ x, na.rm = TRUE)
+
+ggarrange(philippines_plot_1, philippines_plot_2, philippines_plot_3, philippines_plot_4, ncol = 2, nrow = 2)
+```
+
+For c19ProSo01, participants from Philippines responses fluctuated between 1 and 2, which means that most participants from Philippines either "Somewhat agree" or "Agree" to the statement that "I am willing to help others who suffer from coronavirus." 
+
+For c19ProSo02, participants from Philippines responses fluctuated between 1 and 2, which means that most participants from Philippines either "Somewhat agree" or "Agree" to the statement that "I am willing to make donations to help others that suffer from coronavirus."
+
+For c19ProSo03, participants from Philippines responded 1 which means that most participants from Philippines "Somewhat agree" to the statement that "I am willing to protect vulnerable groups from coronavirus even at my own expense."
+
+For c19ProSo04, participants from Philippines responses fluctuated between 1 and 2, which means that most participants from Philippines either "Somewhat agree" or "Agree" to the statement that "I am willing to make personal sacrifices to prevent the spread of coronavirus."
+
+### Best Predictors for Philippines: 
+* The best predictor for c19ProSo01 is c19ProSo02 with a p-value of 1.568513e-23 which is less than 0.05.
+* The best predictor for c19ProSo02 is c19ProSo03 with a p-value of 2.977494e-25 which is less than 0.05.
+* The best predictor for c19ProSo03 is c19ProSo02 with a p-value of 2.977494e-25 which is less than 0.05.
+* The best predictor for c19ProSo04 is c19ProSo03 with a p-value of 2.934349e-14 which is less than 0.05.
+
+```{r poland}
+poland = cvbase %>% filter(coded_country == "Poland")
+poland <- subset(poland, select = -c(rankOrdLife_1, rankOrdLife_2, rankOrdLife_3, rankOrdLife_4, rankOrdLife_5, rankOrdLife_6, coded_country, employment_status, corona_close))
+
+poland_lm_1 <- lm(c19ProSo01 ~., data = poland)
+c19ProSo01_coefficients <- summary(poland_lm_1)$coefficients
+c19ProSo01_significant_predictors <- c19ProSo01_coefficients[c19ProSo01_coefficients[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo01_best_predictors <- c19ProSo01_significant_predictors[order(abs(c19ProSo01_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo01_best_predictors[1:2, ]
+poland_plot_1 <- qplot(seq_along(poland$c19ProSo01), poland$c19ProSo01, main = "Participants Responses for c19ProSo01 for Poland", xlab = "c19ProSo01", ylab = "c19ProSo01") + geom_smooth(method = "loess", formula = y ~ x, na.rm = TRUE)
+
+poland_lm_2 <- lm(c19ProSo02 ~., data = poland)
+c19ProSo02_coefficients <- summary(poland_lm_2)$coefficients
+c19ProSo02_significant_predictors <- c19ProSo02_coefficients[c19ProSo02_coefficients[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo02_best_predictors <- c19ProSo02_significant_predictors[order(abs(c19ProSo02_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo02_best_predictors[1:2, ]
+poland_plot_2 <- qplot(seq_along(poland$c19ProSo02), poland$c19ProSo02, main = "Participants Responses for c19ProSo02 for Poland", xlab = "c19ProSo02", ylab = "c19ProSo02") + geom_smooth(method = "loess", formula = y ~ x, na.rm = TRUE)
+
+poland_lm_3 <- lm(c19ProSo03 ~., data = poland)
+c19ProSo03_coefficients <- summary(poland_lm_3)$coefficients
+c19ProSo03_significant_predictors <- c19ProSo03_coefficients[c19ProSo03_coefficients[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo03_best_predictors <- c19ProSo03_significant_predictors[order(abs(c19ProSo03_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo03_best_predictors[1:2, ]
+poland_plot_3 <- qplot(seq_along(poland$c19ProSo03), poland$c19ProSo03, main = "Participants Responses for c19ProSo03 for Poland", xlab = "c19ProSo03", ylab = "c19ProSo03") + geom_smooth(method = "loess", formula = y ~ x, na.rm = TRUE)
+
+poland_lm_4 <- lm(c19ProSo04 ~., data = poland)
+c19ProSo04_coefficients <- summary(poland_lm_4)$coefficients
+c19ProSo04_significant_predictors <- c19ProSo04_coefficients[c19ProSo04_coefficients[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo04_best_predictors <- c19ProSo04_significant_predictors[order(abs(c19ProSo04_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo04_best_predictors[1:2, ]
+poland_plot_4 <- qplot(seq_along(poland$c19ProSo04), poland$c19ProSo04, main = "Participants Responses for c19ProSo04 for Poland", xlab = "c19ProSo04", ylab = "c19ProSo04") + geom_smooth(method = "loess", formula = y ~ x, na.rm = TRUE)
+
+ggarrange(poland_plot_1, poland_plot_2, poland_plot_3, poland_plot_4, ncol = 2, nrow = 2)
+```
+
+For c19ProSo01, participants from Poland responded 1, which means that most participants from Poland "Agree" to the statement that "I am willing to help others who suffer from coronavirus." 
+
+For c19ProSo02, participants from Poland responded 0, which means that most participants from Poland "Neither agree nor disagree" to the statement that "I am willing to make donations to help others that suffer from coronavirus."
+
+For c19ProSo03, participants from Poland responses fluctuated between 0 and 1 which means that most participants from Poland either "Neither agree nor disagree" or "Somewhat agree" to the statement that "I am willing to protect vulnerable groups from coronavirus even at my own expense."
+
+For c19ProSo04, participants from Poland responses fluctuated around 1, which means that most participants from Poland "Somewhat agree" to the statement that "I am willing to make personal sacrifices to prevent the spread of coronavirus."
+
+### Best Predictors for Poland: 
+* The best predictor for c19ProSo01 is c19ProSo03 with a p-value of 3.262814e-10 which is less than 0.05.
+* The best predictor for c19ProSo02 is c19ProSo01 with a p-value of 5.703087e-09 which is less than 0.05.
+* The best predictor for c19ProSo03 is c19ProSo04 with a p-value of 5.539451e-21 which is less than 0.05.
+* The best predictor for c19ProSo04 is c19ProSo03 with a p-value of 5.539451e-21 which is less than 0.05.
+
+```{r saudi_arabia}
+saudi_arabia = cvbase %>% filter(coded_country == "Saudi Arabia")
+saudi_arabia <- subset(saudi_arabia, select = -c(rankOrdLife_1, rankOrdLife_2, rankOrdLife_3, rankOrdLife_4, rankOrdLife_5, rankOrdLife_6, coded_country, employment_status, corona_close))
+
+saudi_arabia_lm_1 <- lm(c19ProSo01 ~., data = saudi_arabia)
+c19ProSo01_coefficients <- summary(saudi_arabia_lm_1)$coefficients
+c19ProSo01_significant_predictors <- c19ProSo01_coefficients[c19ProSo01_coefficients[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo01_best_predictors <- c19ProSo01_significant_predictors[order(abs(c19ProSo01_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo01_best_predictors[1:2, ]
+saudi_arabia_plot_1 <- qplot(seq_along(saudi_arabia$c19ProSo04), saudi_arabia$c19ProSo04, main = "Participants Responses for c19ProSo04 for Saudi Arabia", xlab = "c19ProSo04", ylab = "c19ProSo04") + geom_smooth(method = "loess", formula = y ~ x, na.rm = TRUE)
+
+saudi_arabia_lm_2 <- lm(c19ProSo02 ~., data = saudi_arabia)
+c19ProSo02_coefficients <- summary(saudi_arabia_lm_2)$coefficients
+c19ProSo02_significant_predictors <- c19ProSo02_coefficients[c19ProSo02_coefficients[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo02_best_predictors <- c19ProSo02_significant_predictors[order(abs(c19ProSo02_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo02_best_predictors[1:2, ]
+saudi_arabia_plot_2 <- qplot(seq_along(saudi_arabia$c19ProSo04), saudi_arabia$c19ProSo04, main = "Participants Responses for c19ProSo04 for Saudi Arabia", xlab = "c19ProSo04", ylab = "c19ProSo04") + geom_smooth(method = "loess", formula = y ~ x, na.rm = TRUE)
+
+saudi_arabia_lm_3 <- lm(c19ProSo03 ~., data = saudi_arabia)
+c19ProSo03_coefficients <- summary(saudi_arabia_lm_3)$coefficients
+c19ProSo03_significant_predictors <- c19ProSo03_coefficients[c19ProSo03_coefficients[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo03_best_predictors <- c19ProSo03_significant_predictors[order(abs(c19ProSo03_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo03_best_predictors[1:2, ]
+saudi_arabia_plot_3 <- qplot(seq_along(saudi_arabia$c19ProSo04), saudi_arabia$c19ProSo04, main = "Participants Responses for c19ProSo04 for Saudi Arabia", xlab = "c19ProSo04", ylab = "c19ProSo04") + geom_smooth(method = "loess", formula = y ~ x, na.rm = TRUE)
+
+saudi_arabia_lm_4 <- lm(c19ProSo04 ~., data = saudi_arabia)
+c19ProSo04_coefficients <- summary(saudi_arabia_lm_4)$coefficients
+c19ProSo04_significant_predictors <- c19ProSo04_coefficients[c19ProSo04_coefficients[, "Pr(>|t|)"] < 0.05, ]
+c19ProSo04_best_predictors <- c19ProSo04_significant_predictors[order(abs(c19ProSo04_significant_predictors[, "Pr(>|t|)"]), decreasing = FALSE), ]
+c19ProSo04_best_predictors[1:2, ]
+saudi_arabia_plot_4 <- qplot(seq_along(saudi_arabia$c19ProSo04), saudi_arabia$c19ProSo04, main = "Participants Responses for c19ProSo04 for Saudi Arabia", xlab = "c19ProSo04", ylab = "c19ProSo04") + geom_smooth(method = "loess", formula = y ~ x, na.rm = TRUE)
+
+ggarrange(saudi_arabia_plot_1, saudi_arabia_plot_2, saudi_arabia_plot_3, saudi_arabia_plot_4, ncol = 2, nrow = 2)
+```
+
+For c19ProSo01, participants from Saudi Arabia responded 1, which means that most participants from Saudi Arabia "Somewhat agree" to the statement that "I am willing to help others who suffer from coronavirus." 
+
+For c19ProSo02, participants from Saudi Arabia responded 1, which means that most participants from Saudi Arabia "Somewhat agree" to the statement that "I am willing to make donations to help others that suffer from coronavirus."
+
+For c19ProSo03, participants from Saudi Arabia responded 1 which means that most participants from Saudi Arabia "Somewhat agree" to the statement that "I am willing to protect vulnerable groups from coronavirus even at my own expense."
+
+For c19ProSo04, participants from Saudi Arabia responded 1, which means that most participants from Saudi Arabia "Somewhat agree" to the statement that "I am willing to make personal sacrifices to prevent the spread of coronavirus."
+
+### Best Predictors for Saudi Arabia: 
+* The best predictor for c19ProSo01 is c19ProSo02 with a p-value of 4.560679e-18 which is less than 0.05.
+* The best predictor for c19ProSo02 is c19ProSo03 with a p-value of 5.998479e-22 which is less than 0.05.
+* The best predictor for c19ProSo03 is c19ProSo04 with a p-value of 1.997604e-28 which is less than 0.05.
+* The best predictor for c19ProSo04 is c19ProSo03 with a p-value of 1.997604e-28 which is less than 0.05.
+
+# Appendix
+### Summary of cvbase
+```{r summary_cvbase}
+summary(cvbase)
+str(cvbase)
+```
+
+### Head of the external csv file
+```{r external_data_head}
+# Take a look of the dataset
+head(corona)
+```
+### All countries and columns names from the external csv file
+```{r external_data_country_column_names}
+# List out all countries
+unique(corona$Country)
+# List out all column names to help identify potential indicators
+names(corona)
+```
+
+### Linear Regression Model Summary for Hungary
+```{r lm_summary_hungary}
+# c19ProSo01
+summary(hungary_lm_1)
+# c19ProSo02
+summary(hungary_lm_2)
+# c19ProSo03
+summary(hungary_lm_3)
+# c19ProSo04
+summary(hungary_lm_4)
+```
+
+### Linear Regression Model Summary for Iran
+```{r lm_summary_iran}
+# c19ProSo01
+summary(iran_lm_1)
+# c19ProSo02
+summary(iran_lm_2)
+# c19ProSo03
+summary(iran_lm_3)
+# c19ProSo04
+summary(iran_lm_4)
+```
+
+### Linear Regression Model Summary for Philippines
+```{r lm_summary_philippines}
+# c19ProSo01
+summary(philippines_lm_1)
+# c19ProSo02
+summary(philippines_lm_2)
+# c19ProSo03
+summary(philippines_lm_3)
+# c19ProSo04
+summary(philippines_lm_4)
+```
+
+### Linear Regression Model Summary for Poland
+```{r lm_summary_poland}
+# c19ProSo01
+summary(poland_lm_1)
+# c19ProSo02
+summary(poland_lm_2)
+# c19ProSo03
+summary(poland_lm_3)
+# c19ProSo04
+summary(poland_lm_4)
+```
+
+### Linear Regression Model Summary for Saudi Arabia
+```{r lm_summary_saudi_arabia}
+# c19ProSo01
+summary(saudi_arabia_lm_1)
+# c19ProSo02
+summary(saudi_arabia_lm_2)
+# c19ProSo03
+summary(saudi_arabia_lm_3)
+# c19ProSo04
+summary(saudi_arabia_lm_4)
+```

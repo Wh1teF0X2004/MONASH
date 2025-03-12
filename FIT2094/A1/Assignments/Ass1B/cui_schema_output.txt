@@ -1,0 +1,459 @@
+
+Table APPROVED_DRIVER dropped.
+
+
+Table AUTHORITY dropped.
+
+
+Table BIN dropped.
+
+
+Table BIN_DETAIL dropped.
+
+
+Table BINV1 dropped.
+
+
+Table CONTRACT dropped.
+
+
+Table DRIVER dropped.
+
+
+Table OWNER dropped.
+
+
+Table OWNER_PROPERTY dropped.
+
+
+Table PROPERTY dropped.
+
+
+Table PROPERTY_BIN dropped.
+
+
+Table REPORT dropped.
+
+
+Table REPORTV2 dropped.
+
+
+Table STREET dropped.
+
+
+Table TRUCK dropped.
+
+
+Table WASTE dropped.
+
+
+Table WASTE_DETAIL dropped.
+
+
+Table WASTEV1 dropped.
+
+
+Table APPROVED_DRIVER created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Table APPROVED_DRIVER altered.
+
+
+Table AUTHORITY created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Table AUTHORITY altered.
+
+
+Table BIN created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Table BIN altered.
+
+
+Table BIN_DETAIL created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Table BIN_DETAIL altered.
+
+
+Table BINV1 created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Table BINV1 altered.
+
+
+Table CONTRACT created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Table CONTRACT altered.
+
+
+Table DRIVER created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Table DRIVER altered.
+
+
+Table OWNER created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Table OWNER altered.
+
+
+Table OWNER_PROPERTY created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Table OWNER_PROPERTY altered.
+
+
+Table OWNER_PROPERTY altered.
+
+
+Table PROPERTY created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Table PROPERTY altered.
+
+
+Table PROPERTY_BIN created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Table PROPERTY_BIN altered.
+
+
+Table REPORT created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Table REPORT altered.
+
+
+Table REPORTV2 created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Table REPORTV2 altered.
+
+
+Table STREET created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Table STREET altered.
+
+
+Table TRUCK created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Table TRUCK altered.
+
+
+Table WASTE created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Table WASTE altered.
+
+
+Table WASTE_DETAIL created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Table WASTE_DETAIL altered.
+
+
+Table WASTEV1 created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Table WASTEV1 altered.
+
+
+Table APPROVED_DRIVER altered.
+
+
+Table APPROVED_DRIVER altered.
+
+
+Table BIN_DETAIL altered.
+
+
+Table BIN_DETAIL altered.
+
+
+Table BINV1 altered.
+
+
+Table BINV1 altered.
+
+
+Table CONTRACT altered.
+
+
+Table OWNER_PROPERTY altered.
+
+
+Table OWNER_PROPERTY altered.
+
+
+Table PROPERTY_BIN altered.
+
+
+Table PROPERTY_BIN altered.
+
+
+Table PROPERTY_BIN altered.
+
+
+Table PROPERTY altered.
+
+
+Table STREET altered.
+
+
+Table TRUCK altered.
+
+
+Table WASTE_DETAIL altered.
+
+
+Table WASTE_DETAIL altered.
+

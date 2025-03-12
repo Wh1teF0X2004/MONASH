@@ -1,0 +1,17 @@
+What Is a Blockchain?
+A blockchain is an open, distributed ledger that records transactions in code. In practice, it’s a little like a checkbook that’s distributed across countless computers around the world. Transactions are recorded in “blocks” that are then linked together on a “chain” of previous cryptocurrency transactions.
+
+“Imagine a book where you write down everything you spend money on each day,” says Buchi Okoro, CEO and co-founder of African cryptocurrency exchange Quidax. “Each page is similar to a block, and the entire book, a group of pages, is a blockchain.”
+
+With a blockchain, everyone who uses a cryptocurrency has their own copy of this book to create a unified transaction record.  Each new transaction as it happens is logged, and every copy of the blockchain is updated simultaneously with the new information, keeping all records identical and accurate.
+
+To prevent fraud, each transaction is checked using a validation technique, such as proof of work or proof of stake.
+
+How Can You Mine Cryptocurrency?
+Mining is how new units of cryptocurrency are released into the world, generally in exchange for validating transactions. While it’s theoretically possible for the average person to mine cryptocurrency, it’s increasingly difficult in proof-of-work systems, like Bitcoin.
+
+“As the Bitcoin network grows, it gets more complicated, and more processing power is required,” says Spencer Montgomery, founder of Uinta Crypto Consulting. “The average consumer used to be able to do this, but now it’s just too expensive. There are too many people who have optimized their equipment and technology to outcompete.”
+
+Proof-of-work cryptocurrencies also require huge amounts of energy to mine. For example, Bitcoin mining currently consumes electricity at an annualized rate of 127 terawatt-hours (TWh), which exceeds Norway’s entire annual electricity consumption.
+
+While it’s impractical for the average person to earn crypto by mining in a proof of work system, the proof-of-stake model requires less high-powered computing as validators are chosen randomly based on the amount they stake. It does, however, require that you already own a cryptocurrency to participate. (If you have no crypto, you have nothing to stake.)

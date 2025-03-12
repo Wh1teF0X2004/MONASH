@@ -1,0 +1,96 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="87C8FBF2-A252-26D1-E568-025BB5690816" name="WASTE_DETAIL">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>BEE0E77B-3920-72E9-881B-7D65896AF13A</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="contract_collection_cost" id="8CB345BB-9228-2FDB-EE37-75CD2A6920F0">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Cost of collecting waste stated in contract]]></commentInRDBMS>
+<generatorID>F5EB186A-8DF3-5AB9-7658-9BA163867F42</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="contract_id" id="79D1CBF5-8BE0-E63D-ED0D-A30D8E91E348">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Contract Number]]></commentInRDBMS>
+<generatorID>11506332-D634-B724-E4D5-529E4EBBE483</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="99AB9496-2EDF-690F-6E77-3C171B634A65" referredColumn="35F26D2B-FD68-92B6-EABA-007C356968AA"/>
+</associations>
+</Column>
+<Column name="waste_type_id" id="5DB85FD1-59AF-CB55-F87F-E8CE630C8C40">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Waste Type ID]]></commentInRDBMS>
+<generatorID>0641B75B-4C39-AFCF-1387-DDA5604EB9C7</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3F8F660F-A4E0-30C6-9126-5AEA5BB815DD" referredColumn="3542F022-0BD8-D25B-5FE0-0883F3964260"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="50D093FC-531B-6262-F399-E15F6DD69AE5" name="WASTE_DETAIL_PK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>2582BE9A-95EB-7AB5-2FE1-56013DE2A03A</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="79D1CBF5-8BE0-E63D-ED0D-A30D8E91E348"/>
+<colUsage columnID="5DB85FD1-59AF-CB55-F87F-E8CE630C8C40"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FC7BC527-29DF-302A-03E7-F16FF0FEC314" name="WASTE_DETAIL_WASTEv1_FK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>89077512-13BC-5CDB-FC4D-2FD49D9BCDF7</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5DB85FD1-59AF-CB55-F87F-E8CE630C8C40"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5D4D8193-6DCD-E5A3-2B15-7F1529A71FAC" name="WASTE_DETAIL_CONTRACT_FK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>75FB6F99-16EA-1CA9-BC2D-0490BFD3F39A</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="79D1CBF5-8BE0-E63D-ED0D-A30D8E91E348"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

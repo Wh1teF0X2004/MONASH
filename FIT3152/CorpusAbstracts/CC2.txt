@@ -1,0 +1,29 @@
+How does cryptocurrency work?
+Cryptocurrencies run on a distributed public ledger called blockchain, a record of all transactions updated and held by currency holders.
+
+Units of cryptocurrency are created through a process called mining, which involves using computer power to solve complicated mathematical problems that generate coins. Users can also buy the currencies from brokers, then store and spend them using cryptographic wallets.
+
+If you own cryptocurrency, you don’t own anything tangible. What you own is a key that allows you to move a record or a unit of measure from one person to another without a trusted third party.
+
+Although Bitcoin has been around since 2009, cryptocurrencies and applications of blockchain technology are still emerging in financial terms, and more uses are expected in the future. Transactions including bonds, stocks, and other financial assets could eventually be traded using the technology.
+
+Cryptocurrency examples
+There are thousands of cryptocurrencies. Some of the best known include:
+
+Bitcoin:
+
+Founded in 2009, Bitcoin was the first cryptocurrency and is still the most commonly traded. The currency was developed by Satoshi Nakamoto – widely believed to be a pseudonym for an individual or group of people whose precise identity remains unknown.
+
+Ethereum:
+
+Developed in 2015, Ethereum is a blockchain platform with its own cryptocurrency, called Ether (ETH) or Ethereum. It is the most popular cryptocurrency after Bitcoin.
+
+Litecoin:
+
+This currency is most similar to bitcoin but has moved more quickly to develop new innovations, including faster payments and processes to allow more transactions.
+
+Ripple:
+
+Ripple is a distributed ledger system that was founded in 2012. Ripple can be used to track different kinds of transactions, not just cryptocurrency. The company behind it has worked with various banks and financial institutions.
+
+Non-Bitcoin cryptocurrencies are collectively known as “altcoins” to distinguish them from the original.

@@ -1,0 +1,133 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="42E9F7D7-C139-E314-ABE5-1AF139A68D24" name="BIN_DETAIL">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>95BF2F99-04F6-0015-645B-BC06910CEA42</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="contract_supply_cost" id="DDFF42D3-6839-8E41-6AD1-7308DDFD502C">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Supply cost of bin stated in contract]]></commentInRDBMS>
+<generatorID>282F0916-4E18-D766-EEB8-CCCEA1355E04</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="contract_id" id="3F5CD054-BCD0-FDAF-5CE5-6FC31EC98138">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Contract Number]]></commentInRDBMS>
+<generatorID>7AA4E909-C335-3BD9-AF91-F1C63B93B595</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="776C8EC9-D17F-46E1-5896-60470622FD83" referredColumn="35F26D2B-FD68-92B6-EABA-007C356968AA"/>
+</associations>
+</Column>
+<Column name="bin_size" id="77A0F0CA-CB6E-E668-B45C-DCD6793CB241">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[size of the bin]]></commentInRDBMS>
+<generatorID>AC0B4D83-985A-9A47-8C48-198DA61CD1E9</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6AA24242-3CBD-2DCA-0783-92815BA5D0E5" referredColumn="00E80DE0-5BFD-745D-F85C-88C0FF0C5B0F"/>
+</associations>
+</Column>
+<Column name="waste_type_id" id="0031CA25-2AA0-2DD6-D57A-8671625E2357">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Waste Type ID]]></commentInRDBMS>
+<generatorID>ABF37434-0DB2-86B3-F31E-E3956D6525A0</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6AA24242-3CBD-2DCA-0783-92815BA5D0E5" referredColumn="858687A2-B849-B35A-D814-1D605D94D6D2"/>
+</associations>
+</Column>
+<Column name="collection_date" id="11410D89-D4C9-B1D0-7C7D-51F428819AFD">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Date of Collection]]></commentInRDBMS>
+<generatorID>C98E68C1-E945-A539-1E25-9C8741DFEC7F</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6AA24242-3CBD-2DCA-0783-92815BA5D0E5" referredColumn="C6B4ED69-EE18-C0A4-AAF5-0FF649A7BDB7"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="340FD2C7-BA95-C549-BC79-D163F52703C0" name="BIN_DETAIL_PK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>112A3A6F-B7A8-11BF-AE59-533027B5DF48</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3F5CD054-BCD0-FDAF-5CE5-6FC31EC98138"/>
+<colUsage columnID="77A0F0CA-CB6E-E668-B45C-DCD6793CB241"/>
+<colUsage columnID="0031CA25-2AA0-2DD6-D57A-8671625E2357"/>
+<colUsage columnID="11410D89-D4C9-B1D0-7C7D-51F428819AFD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7D125D5F-CAC5-AFF8-8E45-C2DACD98F044" name="BIN_DETAIL_CONTRACT_FK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>B24224AC-BC2D-8A0D-3433-D57389F5F680</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3F5CD054-BCD0-FDAF-5CE5-6FC31EC98138"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9563E731-51D4-70B8-4D7F-51F5E3BFD92D" name="BIN_DETAIL_BINv1_FK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>E973866F-BA88-4B6D-7138-E3DFB370B513</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="77A0F0CA-CB6E-E668-B45C-DCD6793CB241"/>
+<colUsage columnID="0031CA25-2AA0-2DD6-D57A-8671625E2357"/>
+<colUsage columnID="11410D89-D4C9-B1D0-7C7D-51F428819AFD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

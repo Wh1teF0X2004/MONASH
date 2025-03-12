@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="BCC23F61-7E52-0A85-6E97-D184EB6C19F0" name="PROD_CATEGORY">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-03 03:50:24 UTC</createdTime>
+<ownerDesignName>cust_order</ownerDesignName>
+<engineerTo>
+<item key="63FDC9C6-839C-05AB-5457-3E4BB34715EF" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="pcat_id" id="BBA9DE6A-5E42-C28F-4582-A659DE0434CF">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-03 03:50:34 UTC</createdTime>
+<commentInRDBMS><![CDATA[product category id]]></commentInRDBMS>
+<ownerDesignName>cust_order</ownerDesignName>
+<engineerTo>
+<item key="63FDC9C6-839C-05AB-5457-3E4BB34715EF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="pcat_name" id="7C482ECA-5CEA-1600-5492-A60C639FFF2C">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-03 03:50:34 UTC</createdTime>
+<commentInRDBMS><![CDATA[product category name]]></commentInRDBMS>
+<ownerDesignName>cust_order</ownerDesignName>
+<engineerTo>
+<item key="63FDC9C6-839C-05AB-5457-3E4BB34715EF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="64EF2403-8466-43EE-AA7B-818C4DAB31D5" name="PROD_CATEGORY PK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-04-03 03:50:52 UTC</createdTime>
+<ownerDesignName>cust_order</ownerDesignName>
+<engineerTo>
+<item key="63FDC9C6-839C-05AB-5457-3E4BB34715EF" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>BBA9DE6A-5E42-C28F-4582-A659DE0434CF</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

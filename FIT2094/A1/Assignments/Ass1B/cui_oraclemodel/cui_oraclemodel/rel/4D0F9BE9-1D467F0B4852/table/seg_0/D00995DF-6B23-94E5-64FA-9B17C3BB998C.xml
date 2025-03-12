@@ -1,0 +1,126 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D00995DF-6B23-94E5-64FA-9B17C3BB998C" name="OWNER_PROPERTY">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>CF761D4D-1D19-9166-44E7-1AA388B8A4D5</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="prop_id" id="69C672EE-89D8-3053-F775-6438877F3258">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[ID to identify property]]></commentInRDBMS>
+<generatorID>B7DF5E40-A581-3D44-D425-6A88DE0CC509</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="owner_id" id="C0D0A329-7FFD-2F5D-D170-C596F781A57C">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Owner ID]]></commentInRDBMS>
+<generatorID>6C653E6D-FB3A-705D-9E49-4D29F7220B95</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="72DE8CA5-82AA-5E53-2BC7-2BEDC99BD368" referredColumn="F88C0303-49E3-D32E-5B4E-3CF8ED1EC35B"/>
+</associations>
+</Column>
+<Column name="street_id" id="FE20D69C-497F-E5B3-467A-4ABB56D89DF1">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Street ID]]></commentInRDBMS>
+<generatorID>221399C6-BCDF-EFD6-A86F-1DAAC98B91E9</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AD0AE466-0EDF-14C6-0763-D2634A1E2C7C" referredColumn="8C26D01E-534A-6552-1C63-0777612B42BA"/>
+</associations>
+</Column>
+<Column name="au_name" id="E4685783-6751-04D7-6775-D3E1436FDFC6">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Name of authority]]></commentInRDBMS>
+<generatorID>4D42D56F-7FB3-5B1E-B113-A550D889F4CF</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AD0AE466-0EDF-14C6-0763-D2634A1E2C7C" referredColumn="EA855B04-108E-825F-9839-7F999F58DE4E"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="48A857D7-C4B9-523B-B3E5-B83CB9005672" name="OWNER_PROPERTY_PK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>D6AF7F98-E469-666F-35BB-FB277F53D10F</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="69C672EE-89D8-3053-F775-6438877F3258"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5342C380-7EA1-BED8-6787-BF8F3BD19E0C" name="OWNER_PROPERTY_owner_id_street_id_au_name_UN">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>70DF0CBC-79DA-F342-0123-F631167E2EA9</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C0D0A329-7FFD-2F5D-D170-C596F781A57C"/>
+<colUsage columnID="FE20D69C-497F-E5B3-467A-4ABB56D89DF1"/>
+<colUsage columnID="E4685783-6751-04D7-6775-D3E1436FDFC6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="42FFBF61-D310-7F7D-363E-68810F86930A" name="OWNER_PROPERTY_OWNER_FK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>DA827468-A7B7-F2D9-B3BF-B217EB46412C</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C0D0A329-7FFD-2F5D-D170-C596F781A57C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="84A9CBB0-6EA5-DC42-C2AA-4CCF506EEC72" name="OWNER_PROPERTY_PROPERTY_FK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>EEDB3F5D-408A-9F88-B931-AB130506545C</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FE20D69C-497F-E5B3-467A-4ABB56D89DF1"/>
+<colUsage columnID="E4685783-6751-04D7-6775-D3E1436FDFC6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

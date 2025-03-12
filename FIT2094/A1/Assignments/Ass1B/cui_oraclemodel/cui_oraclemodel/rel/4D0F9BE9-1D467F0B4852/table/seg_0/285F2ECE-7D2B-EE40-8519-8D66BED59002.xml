@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="285F2ECE-7D2B-EE40-8519-8D66BED59002" name="PROPERTY">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>DA7289B0-F2D2-C246-BF05-CB74C37403A8</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="street_id" id="8C26D01E-534A-6552-1C63-0777612B42BA">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Street ID]]></commentInRDBMS>
+<generatorID>7305AF7A-5FFF-0117-76A7-4DB37FD40653</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F9896F9D-7C52-338C-8D4B-DB781CDA8A7F" referredColumn="F6C93950-22D7-2E2C-3028-D85245A65FF3"/>
+</associations>
+</Column>
+<Column name="au_name" id="EA855B04-108E-825F-9839-7F999F58DE4E">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Name of authority]]></commentInRDBMS>
+<generatorID>7FE91063-B5EC-208F-1084-868899FF8F55</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F9896F9D-7C52-338C-8D4B-DB781CDA8A7F" referredColumn="9C4CBB7A-9FCC-11B1-C111-2AC0D22E60A1"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A6F2B98F-44B9-BC9A-8793-B4782B968291" name="PROPERTY_PK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>96D02378-8D17-5536-8A1D-854C8BC3F47D</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8C26D01E-534A-6552-1C63-0777612B42BA"/>
+<colUsage columnID="EA855B04-108E-825F-9839-7F999F58DE4E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FF4A7378-D2AF-9327-AD95-456118A34EF7" name="PROPERTY_STREET_FK">
+<createdBy>Nicol Foo</createdBy>
+<createdTime>2023-05-02 17:00:15 UTC</createdTime>
+<generatorID>EBABB256-E803-DBB9-CD76-792007768460</generatorID>
+<ownerDesignName>cui_oraclemodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8C26D01E-534A-6552-1C63-0777612B42BA"/>
+<colUsage columnID="EA855B04-108E-825F-9839-7F999F58DE4E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

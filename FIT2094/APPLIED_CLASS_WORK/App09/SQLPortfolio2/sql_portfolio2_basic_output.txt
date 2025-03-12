@@ -1,0 +1,50 @@
+SQL> 
+SQL> --****PLEASE ENTER YOUR DETAILS BELOW****
+SQL> --sql_portfolio2_basic.sql
+SQL> 
+SQL> --Student ID: 33085625
+SQL> --Student Name: Foo Kai Yan
+SQL> --Unit Code: FIT2094
+SQL> --Tutorial Class No: Tutorial #1 (Monday) 11:00 - 13:00
+SQL> 
+SQL> -- Retrive data from PROPERTY table under RENT user with:
+SQL> -- select * from rent.property
+SQL> 
+SQL> /*1*/
+SQL> -- PLEASE PLACE REQUIRED SQL STATEMENT FOR THIS PART HERE
+SQL> -- ENSURE that your query is formatted and has a semicolon
+SQL> -- (;) at the end of this answer 
+SQL> SELECT maint_cost, maint_id, TO_CHAR(maint_datetime, 'dd-Mon-yyyy') AS datetime, prop_address, owner_givname || ' ' || owner_famname AS ownername 
+  2  FROM rent.maintenance NATURAL JOIN rent.owner NATURAL JOIN rent.property
+  3  WHERE maint_cost BETWEEN 1000 AND 3000 AND UPPER(maint_assigned) = UPPER('Y')
+  4  ORDER BY maint_cost DESC, maint_datetime DESC;
+
+MAINT_COST   MAINT_ID DATETIME             PROP_ADDRESS                                                                     OWNERNAME                                
+---------- ---------- -------------------- -------------------------------------------------------------------------------- -----------------------------------------
+      3000          1 06-Dec-2019          22 Benjamin Track, Suite 722, 8157, Koelpinmouth, Australian Capital Territory   Joela Boshers                            
+      1275         12 07-Nov-2022          284 Princes Highway, Unit 1, 6856, South Annashire, Victoria                     Ronald Meere                             
+      1275          9 07-Oct-2022          284 Princes Highway, Unit 1, 6856, South Annashire, Victoria                     Ronald Meere                             
+      1000         10 22-Oct-2022          928 Olivia Crest, Apt. 293, 4328, Connellymouth, Queensland                      Ludovika Wiggins                         
+      1000          7 06-Oct-2022          284 Princes Highway, Unit 1, 6856, South Annashire, Victoria                     Ronald Meere                             
+
+SQL> 
+SQL> /*2*/
+SQL> -- PLEASE PLACE REQUIRED SQL STATEMENT FOR THIS PART HERE
+SQL> -- ENSURE that your query is formatted and has a semicolon
+SQL> -- (;) at the end of this answer 
+SQL> SELECT rent_agreement_no, tenant_no, tenant_title || '. ' || tenant_givname || ' ' || tenant_famname AS tenantname, 
+  2  rent_weekly_rate, rent_lease_start, prop_address, owner_givname || ' ' || owner_famname AS ownername, 
+  3  rent_lease_period || ' months' AS rent_lease_period
+  4  FROM rent.rent NATURAL JOIN rent.tenant NATURAL JOIN rent.property NATURAL JOIN rent.owner 
+  5  WHERE rent_weekly_rate < 425 AND TO_CHAR(rent_lease_start, 'yyyy') = 2022 AND rent_lease_period >= 6
+  6  ORDER BY rent_lease_period DESC, tenant_no DESC;
+
+RENT_AGREEMENT_NO  TENANT_NO TENANTNAME                                       RENT_WEEKLY_RATE RENT_LEAS PROP_ADDRESS                                                                     OWNERNAME                                 RENT_LEASE_PERIOD                              
+----------------- ---------- ------------------------------------------------ ---------------- --------- -------------------------------------------------------------------------------- ----------------------------------------- -----------------------------------------------
+               24       2720 Ms. Patricia Stroband                                         350 26-MAY-22 531 Sienna Run, Suite 991, 6792, Boscoburgh, Queensland                          Ludovika Wiggins                          9 months                                       
+               25       1286 Ms. Dacey Demchen                                             365 12-JUL-22 928 Olivia Crest, Apt. 293, 4328, Connellymouth, Queensland                      Ludovika Wiggins                          9 months                                       
+               23       2524 Mr. Rich Suggate                                              410 14-APR-22 26 Hackett Knoll, Apt. 615, 6856, South Annashire, Victoria                      Ronald Meere                              6 months                                       
+
+SQL> 
+SQL> --Comment out SET ECHO and SPOOL commands before submitting your portfolio
+SQL> SPOOL OFF
