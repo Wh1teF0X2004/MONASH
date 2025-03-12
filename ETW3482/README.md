@@ -4,7 +4,7 @@
 - Assessment 1 (20%)
 - Assessment 2 (40%)
 - Assessment 3 (40%)
-- Technologies Used: SAS Viya (Tied with student email)
+- Technologies Used: SAS Viya (Tied with student email), Microsoft Words/Google Docs
 
 ## Assessment 1
 - Individual Assessment
