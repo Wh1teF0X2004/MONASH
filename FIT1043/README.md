@@ -4,7 +4,8 @@
 - Assessment 2 (20%)
 - Assessment 3 (15%)
 - Weekly Quiz (5%)
-- Scheduled Final Assessment (50%) 
+- Scheduled Final Assessment (50%)
+- Technologies Used: Python, R Programming, BASH Unix Shell Commands
 
 ## Assessment 1
 - The aim of this assignment is to investigate and visualize data using Python as a data science tool
