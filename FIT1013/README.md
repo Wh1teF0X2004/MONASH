@@ -3,9 +3,10 @@
 - Assessment 1 (25%): Data analysis and data visualisation using Microsoft Excel
 - Assessment 2 (35%): Write procedures using VBA in Microsoft Excel
 - Assessment 3 (30%): Construct database and analyse data using Microsoft Access
-- Weekly Quiz & Test	(10%)
+- Weekly Quiz & Test (10%)
 - Weekly Workshop Tasks	(0%)	
 - 70% attendance hurdle
+- Technologies Used: VBA (Visual Basic for Applications), Power Query, Microsoft Excel, Microsoft Access, SQL (Structured Query Language), Google Sheets
 
 ## Assessment 1
 - Individual Assignment
