@@ -7,6 +7,7 @@
 - Technologies Used: EdStem, Visual Studio Code/PyCharm IDE, Python, MIPS Assembly Language
 
 ## Assessment 1
+- Individual Assignment
 - MIPS Assembly Programming
 - To understand the inner workings of a programming language, and understand how a computer analyses information by converting high-level code into assembly code
 
