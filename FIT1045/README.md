@@ -5,7 +5,7 @@
 - Assessment 3 (25%)
 - Assignment 4 (30%)
 - Assignment 5 (10%)
-- Technologies Used: Python
+- Technologies Used: EdStem, Visual Studio Code/PyCharm IDE, Python
 
 ## Assessment 1
 - Individual Assignment
