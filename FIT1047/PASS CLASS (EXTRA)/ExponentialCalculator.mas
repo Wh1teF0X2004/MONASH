@@ -1,0 +1,73 @@
+﻿// note: refer to the python code while reading this if you're confused!
+
+// base = input()
+Input
+Store base
+// power = input()
+Input
+Store power
+// res = exp(base, power)
+JnS Exp
+// print(res)
+Load res
+Output
+Halt
+
+base,	Hex 0
+power,	Hex 0
+res,	Hex 0
+// subroutine for exp
+Exp, 	Hex 000		// store return address
+		// res = 1
+        Load One
+        Store res
+        // while power > 0
+ExpWhile,	Load power
+			Skipcond 800
+            JumpI Exp // terminate subroutine
+            // while loop inner code
+            // res = mult(res,base)
+            Load res
+            Store a
+            Load base
+            Store b
+            // res = mult(res, base)
+            JnS Mult
+            Load multres
+            Store res
+            
+            // power = power - 1
+            Load power
+            Subt One
+            Store power
+            
+            // restart loop to check condition
+            Jump ExpWhile
+      
+        
+a,	Hex 0
+b,	Hex 0
+multres, Hex 0
+// subroutine for Mult
+Mult,	Hex 000
+		// multres = 0
+        Clear
+        Store multres
+        // while b > 0
+MultWhile,	Load b
+			Skipcond 800
+            JumpI Mult // terminate subroutine
+            /// while loop inner code
+            // multres = multres + a
+            Load multres
+            Add a
+            Store multres
+            // b = b - 1
+            Load b
+            Subt One
+            Store b
+            // restart loop to check condition
+            Jump MultWhile
+        
+// declare constant
+One,	Hex 1

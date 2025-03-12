@@ -1,0 +1,577 @@
+﻿// Template for assignment 2
+//
+// Your assignment submission needs to be based on this template.
+//
+// Carefully read the instructions.
+//
+// You need to complete the subroutines and the test cases below.
+//
+// Make sure all code is your own, and don't share any code
+// or code fragments with other students.
+
+
+/ Execute all the test cases
+/ (You can comment the next line if you don't want to
+/ run the test cases)
+
+ORG 100 // Prevent 2.5 from overwritting my 2.1, 2.2, 2.3 and 2.4 codes
+// JnS TestAll
+
+/ Execute the main wordle game
+/ JnS Wordle
+
+/ Finish execution
+Halt
+
+////////////////////////////////
+/ Task 2.2: ToUpper subroutine
+////////////////////////////////
+
+/ ... insert your code here
+
+ToUpper, HEX 000
+// Begin loop is to check if the string character is empty (HEX 000) or not
+Begin, LoadI ToUpperWord // ToUpperWord is where the string is stored
+	skipcond 800 // If it's more than 0, it'll jump to Check; if not more than 0, will jump to End
+    Jump End // End the loop to output String
+    Jump Check // Check if the character is Uppercase or Lowercase
+  
+End, JumpI ToUpper
+
+Check, loadI ToUpperWord
+	Subt sixty
+    Skipcond 800 
+    Jump NextChar // After minus HEX 60, if not more than 0, it's uppercase
+    LoadI ToUpperWord // After minus HEX 60, if more than 0, it's lowercase
+    Subt thirtytwo // minus 32 to get character uppercase
+    StoreI ToUpperWord
+    Jump NextChar
+
+NextChar, Load ToUpperWord
+	Add One // Add 1 to AC to signify to check next character in string
+    Store ToUpperWord
+    Jump Begin 
+
+// Declaring variables
+thirtytwo, DEC 32 // This is the same as HEX 20
+sixty, HEX 60
+ToUpperWord, HEX 0 
+
+///////////////////////////////////////
+/ Task 2.3: StringContains subroutine
+///////////////////////////////////////
+
+/ ... insert your code here
+
+StringContains, HEX 000
+// Beginning loop is to check if the string character is empty (HEX 000) or not
+Beginning, LoadI StringContainsStart // StringContainsStart is where the string is stored
+	Skipcond 800 // If it's more than 0, it'll jump to Checking; if not more than 0, will jump to Ending
+    Jump Ending // End the loop to output String
+	Jump Checking // Check if the character is present or not in the string
+
+Ending, Load numZero // Will only jump here if string doesn't contain the character, so 0 is the output
+	Store StringContainsResult // Store 0
+	JumpI StringContains
+
+Checking, LoadI StringContainsStart
+	Subt StringContainsChar
+	Skipcond 400
+    Jump NextCharacter
+	Load numOne // Will only jump here if string does contain the character, so 1 is the output
+    Store StringContainsResult // Store 1
+	JumpI StringContains 
+
+NextCharacter, Load StringContainsStart
+	Add One // Add 1 to AC to signify to check next character in string
+    Store StringContainsStart
+    Jump Beginning
+    
+// Declare variables
+numZero, HEX 30 // zero (0) shown in unicode
+numOne, HEX 31 // one (1) shown in unicode
+StringContainsResult, HEX 0 
+StringContainsChar, HEX 0
+StringContainsStart, HEX 0
+
+///////////////////////////////////
+/ Task 2.4: CheckGuess subroutine
+///////////////////////////////////
+
+/ ... insert your code here
+
+CheckGuess, HEX 000
+CheckStringLength, LoadI LengthGuessedWord
+	Skipcond 800 // Check if AC > 0
+	Jump SomewhereElseToCheck
+    Jump TooLong
+    
+// Check if equal length or too short
+SomewhereElseToCheck, Skipcond 400 // Check if AC = 0
+    Jump SelectedWordCompare // Jump here if don't equal 0, which means guessed word too short
+    Jump NextGuessedWord // Jump here if equal length of selected and guessed word to compare character in both words
+    
+SelectedWordCompare, LoadI LengthSelectedWord
+	Skipcond 400 // Check if AC = 0
+    Jump TooShort
+	Jump CheckStringPosition 
+
+// Get next character from guessed word
+NextGuessedWord, Load GreatAdr
+	Add One 
+    Store GreatAdr
+	Jump SomewhereElseToCheck
+
+// Output Error message on word too long
+TooLong, LoadI ErrorLongAdr
+	Skipcond 800 // Check if AC > 0
+	JumpI CheckGuess 
+	Output
+	Load ErrorLongAdr
+	Add One // Add 1 to AC to signify to check next character in string
+	Store ErrorLongAdr
+    Jump TooLong
+
+// Output Error message on word too short 
+TooShort, LoadI ErrorShortAdr
+	Skipcond 800 // Check if AC > 0
+	JumpI CheckGuess
+	Output
+	Load ErrorShortAdr
+	Add One // Add 1 to AC to signify to check next character in string
+	Store ErrorShortAdr
+	Jump TooShort
+    
+// Output in uppercase if the guessed word have a character that at same position with selected word
+CheckStringPosition, LoadI CheckGuessedWord
+	Store CurrentGuessedChar
+	Skipcond 800 // Check if AC > 0
+	LoadI CheckSelectedWord
+	Store CurrentSelectedChar
+	Subt CurrentGuessedChar
+	Skipcond 400 // Check if AC = 0
+	JumpI StringContainsCharSub // If not jump to StringContainsCharSub subroutine to see if guessed word have a character present in selected word but at wrong position
+	Output
+
+// FROM 2.3 
+StringContainsCharSub, HEX 000 
+StringContainBeginning, LoadI StringContainsStarting 
+	Skipcond 800 // Check if AC > 0
+    Jump StringContainEnding 
+	Jump StringContainChecking 
+
+StringContainEnding, Load Dash 
+	Store StringContainsEndResult // Store _
+	JumpI StringContainsCharSub
+
+StringContainChecking, LoadI StringContainsStarting
+	Subt CurrentSelectedChar 
+	Skipcond 400 // Check if AC = 0
+    Jump StringContainNextCharacter
+	Load CurrentSelectedChar
+    Add twenty // Make letter lowercase
+    Store StringContainsEndResult // Store the character here
+	JumpI StringContainsCharSub 
+
+StringContainNextCharacter, Load StringContainsStarting
+	Add One // Add 1 to AC to signify to check next character in string
+    Store StringContainsStarting
+    Jump StringContainBeginning
+    
+// Declare variables
+Dash, HEX 05F
+twenty, HEX 20	
+StringContainsStarting, HEX 0
+StringContainsEndResult, HEX 0
+CurrentGuessedChar, HEX 0
+CurrentSelectedChar, HEX 0
+CheckGuessedWord, HEX 0
+CheckSelectedWord, HEX 0
+LengthSelectedWord, ADR Words
+LengthGuessedWord, ADR Great
+    
+/////////////////////////////////////////
+/ Task 2.5: Main Wordle game subroutine
+/////////////////////////////////////////
+        / ... insert your code here\
+Wordle, HEX 000 / Return address
+PromptMessage, LoadI PromptAdr 
+    Output // Output message to prompt user input
+    Jump InputLoop // Jump to get user input
+
+GoToCheckGuess, JnS CheckGuess // Jump to 2.4 to get result of user guess according to selected word
+
+// This loop below ensures that only 6 chances are used to guess the word
+// Where everytime a guess is made, ChancesAdr will Add DEC 1 to AC until the null (HEX 000) 
+// which will jumpt EndGame loop to Print the message "Game Over" before JumpI Wordle
+sixChanceOnly, LoadI ChancesAdr
+	Skipcond 800 // Check if AC > 0
+	Jump EndGame
+	Add One
+    Store ChancesAdr
+	Jump PromptMessage
+
+// This loop below is to print the "Game Over" message
+EndGame, LoadI GameOverAdr
+	Skipcond 800 // Check if AC > 0
+    JumpI Wordle / return
+    Output
+    Load GameOverAdr
+	Add One
+    Store GameOverAdr
+	Jump EndGame
+
+// "Game Over" message to indicate all 6 chances are used
+GameOverAdr, ADR GameOver 
+GameOver, HEX 047 
+	HEX 061 
+    HEX 06D 
+    HEX 065 
+    HEX 020 
+    HEX 04F 
+    HEX 076 
+    HEX 065 
+    HEX 072 
+    HEX 000 /null
+    
+/ Task 2.1: Your name as a string
+Name,  HEX 046 /F
+	HEX 06F /o
+	HEX 06F /o
+	HEX 04B /K
+	HEX 061 /a
+	HEX 069 /i
+	HEX 059 /Y
+	HEX 061 /a
+	HEX 06E /n
+	HEX 03F /? as my 10th character to meet the min of 10 characters
+	HEX 000 /null to signify end of string
+
+//////////////////////////
+/ Pre-defined Subroutines
+//////////////////////////
+
+/ InputString subroutine
+/   Expects the starting address of an area in memory
+/   where the string can be stored in argument InputTo.
+/   Requests a string character by character from the user.
+/   When the user enters value 0 (not the character "0" but
+/   the integer 0), the input is finished and the
+/   subroutine returns.
+/   Careful: the subroutine will overwrite any memory
+/     starting from the InputTo address.
+
+InputTo,        HEX 0               / Start address where to store the string
+InputString,    HEX 0               / Return address placeholder
+// Uncomment the line below "Jump ToUpper" If just want to run 2.5, otherwise, leave it commentted
+/ Jump ToUpper 
+// I did a small modification here to accomodate my 2.5 code
+// As once InputLoop ran and stopped, it'll JumpI to InputString so I let it continue on to run to ToUpper subroutine to convert user input to uppercase
+InputLoop,      Input
+                StoreI InputTo
+                Skipcond 800
+                JumpI InputString   / Return if entered value is 0
+                Load InputTo
+                Add One
+                Store InputTo
+                Jump InputLoop
+
+
+/ PrintString subroutine
+/    Expects the start address of a string to be printed
+/    in argument PrintFrom.
+/    Will print the string character by character until
+/    a 0 is encountered, and then return.
+
+PrintFrom,	    HEX 0				/ Address to start printing from
+PrintString,    HEX 0 				/ Return address placeholder
+// Uncomment the line below "Jump ToUpper" If just want to run 2.5, otherwise, leave it commentted
+/ Jump sixChanceOnly 
+// I did a small modification here to accomodate my 2.5 code
+// As once PrintLoop ran and stopped, it'll JumpI to PrintString so I added that line to let it jump to sixChanceOnly as 2.5 said to only allow user 6 chances to guess
+PrintLoop,      LoadI PrintFrom
+			    Skipcond 800
+                JumpI PrintString   / Return if character is 0
+                Output
+                Load PrintFrom
+                Add One
+                Store PrintFrom
+                Jump PrintLoop
+
+One, Dec 1
+
+/////////////////
+/ Test cases
+/////////////////
+
+/ Each test case is a subroutine that requires no arguments.
+/ The TestAll subroutine calls all the test cases in a row.
+/ Add your own test cases as subroutines, and add the necessary
+/ calls to the TestAll subroutine.
+/ You can then execute individual test cases by calling them
+/ (at the top of the file), or execute all of them by calling
+/ TestAll (see top of the file).
+
+TestAll, HEX 0 / Return address
+         JnS TestToUpper1          / Run first test case
+         JnS TestStringContains1   / Run second test case
+         JnS TestCheckGuess1       / Run another test case
+         JumpI TestAll / Return
+
+/ Test case 1 for ToUpper
+/ Expected output: (your name in upper case) FOOKAIYAN?
+NameAdr, ADR Name
+TestToUpper1, HEX 0 / Return address
+           Load NameAdr
+           Store ToUpperWord
+           JnS ToUpper
+           Load NameAdr
+           Store PrintFrom
+           Jns PrintString
+           JumpI TestToUpper1
+// I am reusing the subroutine above for all my testcase
+// Expected output: FOOKAIYAN! (my Testcase 1)
+// Expected output: FOOKAIYAN* (my Testcase 2)
+// Expected output: FOOKAIYAN^ (my Testcase 3)
+
+/ Test case 1 for StringContains
+/ Expected output: 1 if your name contains the letter F, 0 otherwise
+TestStringContains1Char, HEX 46 
+TestStringContains1, HEX 0 / Return address
+                     Load NameAdr 
+                     Store StringContainsStart
+                     Load TestStringContains1Char
+                     Store StringContainsChar
+                     JnS StringContains
+                     Load StringContainsResult
+                     Output
+                     JumpI TestStringContains1 / Return
+
+// To test my testcase, change TestStringContains1Char and NameAdr to...
+// (Testcase 1: HEX 042 (checking for B), BearAdr)
+// (Testcase 2: HEX 072 (checking for r), readyAdr)
+// (Testcase 3: HEX 04F (checking for O), teaAdr)
+// (Testcase 4: HEX 061 (checking for a), CatAdr)
+
+GreatAdr, ADR Great
+Great, HEX 47
+       HEX 52
+       HEX 45
+       HEX 41
+       HEX 54
+       HEX 0
+       
+SelectedWord, Adr Words
+WordsAdr, ADR Words
+Words, HEX 57
+       HEX 4F
+       HEX 52
+       HEX 44
+       HEX 53
+       HEX 0
+
+// Testcases for 2.2:
+//
+// These strings are all my name but I put them differently where 
+// which character is uppercase and lowercase is different
+// (can uncomment and comment other name string to test)
+// 1st Testcase for 2.2
+/Name,  HEX 066 /f
+/	HEX 04F /O
+/    HEX 06F /o
+/    HEX 06B /k
+/    HEX 041 /A
+/    HEX 069 /i
+/    HEX 059 /Y
+/    HEX 061 /a
+/    HEX 04E /N
+/    HEX 021 /! as my 10th character
+/    HEX 000 / null
+// 2nd Testcase for 2.2
+/Name, HEX 066 /f
+/	HEX 06F /o
+/    HEX 04F /O
+/    HEX 04B /K
+/    HEX 061 /a
+/    HEX 049 /I
+/    HEX 079 /y
+/    HEX 041 /A
+/    HEX 06E /n
+/    HEX 02A /* as my 10th character
+/    HEX 000 / null
+// 3rd Testcase for 2.2
+/Name, HEX 066 /f
+/	HEX 04F /O
+/    HEX 04F /O
+/    HEX 06B /k
+/    HEX 041 /A
+/    HEX 049 /I
+/    HEX 079 /y
+/    HEX 041 /A
+/    HEX 06E /n
+/    HEX 07E /^ as my 10th character
+/    HEX 000 / null
+
+// Testcases for 2.3:
+//
+// Different characters to find for different strings
+//
+// 1st Testcase for 2.3 (Character = B)
+BearAdr, ADR Bear
+Bear,  HEX 062 /b
+	HEX 06C /l
+    HEX 061 /a
+    HEX 063 /c
+    HEX 06B /k
+    HEX 042 /B
+    HEX 065 /e
+    HEX 061 /a
+    HEX 072 /r
+	HEX 000 /null
+// 2nd Testcase for 2.3 (Character = r)
+readyAdr, ADR Ready
+Ready,  HEX 052 /R
+	HEX 065 /e
+    HEX 061 /a
+    HEX 064 /d
+    HEX 079 /y
+    HEX 03F /?
+	HEX 000 /null
+// 3rd Testcase for 2.3 (Character = O)
+teaAdr, ADR Tea
+Tea,  HEX 04F /O
+	HEX 06F /o
+    HEX 06C /l
+    HEX 06F /o
+    HEX 06E /n
+    HEX 067 /g
+    HEX 054 /T
+    HEX 065 /e
+    HEX 061 /a
+	HEX 000 /null
+// 4th Testcase for 2.3 (Character = a)
+MeowAdr, ADR Meow
+Meow,  HEX 04D /M
+	HEX 065 /e
+    HEX 06F /o
+    HEX 077 /w
+	HEX 000 /null
+//
+// Expected output: 1 (my Testcase 1)
+// Expected output: 0 (my Testcase 2)
+// Expected output: 1 (my Testcase 3)
+// Expected output: 0 (my Testcase 4)
+
+/ 2.4 Error message (too short) : Your word is too short
+ErrorShortAdr, ADR ErrorShort
+ErrorShort, HEX 059 
+	HEX 06F 
+    HEX 075 
+    HEX 072 
+    HEX 020 
+    HEX 077 
+    HEX 06F 
+    HEX 072 
+    HEX 064 
+    HEX 020 
+    HEX 069 
+    HEX 073 
+    HEX 020 
+    HEX 074 
+    HEX 06F 
+    HEX 06F 
+    HEX 020 
+    HEX 073 
+    HEX 068 
+    HEX 06F 
+    HEX 072 
+    HEX 074
+    HEX 000 /null
+/ 2.4 Error message (too long) : Your word is too long
+ErrorLongAdr, ADR ErrorLong
+ErrorLong, HEX 059 
+	HEX 06F 
+    HEX 075 
+    HEX 072 
+    HEX 020 
+    HEX 077 
+    HEX 06F 
+    HEX 072 
+    HEX 064 
+    HEX 020 
+    HEX 069 
+    HEX 073 
+    HEX 020 
+    HEX 074 
+    HEX 06F 
+    HEX 06F 
+    HEX 020 
+    HEX 06C 
+    HEX 06F 
+    HEX 06E 
+    HEX 067 
+    HEX 000 /null
+
+// Testcases for 2.4:
+//
+// 1st Testcase for 2.4
+// Guessed word changed from GREAT to CAT
+CatAdr, ADR Cat 
+Cat, HEX 063 
+	HEX 061 
+    HEX 074 
+    HEX 000 /null
+// 2nd Testcase for 2.4  
+// Guessed word changed from GREAT to KITTEN
+KittenAdr, ADR Kitten
+Kitten, HEX 06B 
+	HEX 069 
+    HEX 074 
+    HEX 074 
+    HEX 065 
+    HEX 06E 
+    HEX 000 /null
+// 3rd Testcase for 2.4 (uses same string from Testcase 1 and 2)
+// 4th Testcase for 2.4 (uses same string from Testcase 1 and 2)
+// 5th Testcase for 2.4 (uses same string from original string WORDS)
+/ 2.5 Prompt user inpur message
+PromptAdr, ADR Prompt
+// Prompt = Enter your guesses
+Prompt, HEX 045 
+	HEX 06E 
+    HEX 074 
+    HEX 065 
+    HEX 072 
+    HEX 020 
+    HEX 079 
+    HEX 06F 
+    HEX 075 
+    HEX 072 
+    HEX 020 
+    HEX 067 
+    HEX 075 
+    HEX 065 
+    HEX 073 
+    HEX 073 
+    HEX 065 
+    HEX 073 
+    HEX 000 /null
+
+ChancesAdr, ADR Chances
+Chances, HEX 031 /1
+	HEX 032 /2
+    HEX 033 /3
+    HEX 034 /4
+    HEX 035 /5
+    HEX 036 /6
+    HEX 000 /null
+
+/ Test case 1 for CheckGuess
+/ Expected output: _r___
+TestCheckGuess1, HEX 0 / Return address
+                 Load GreatAdr
+                 Store CheckGuessedWord
+                 Load WordsAdr
+                 Store CheckSelectedWord
+                 JnS CheckGuess
+                 JumpI TestCheckGuess1 / Return
