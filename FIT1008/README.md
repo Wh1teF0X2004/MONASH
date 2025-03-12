@@ -4,6 +4,7 @@
 - Assessment 2 (40%): Object Oriented Programming with Pokemon 
 - Assessment 3 (40%): Algorithms with Minecraft
 - This unit introduces students to core problem-solving, analytical skills, and methodologies useful for developing flexible, robust, and maintainable software
+- Technologies Used: EdStem, Visual Studio Code/PyCharm IDE, Python, MIPS Assembly Language
 
 ## Assessment 1
 - MIPS Assembly Programming
