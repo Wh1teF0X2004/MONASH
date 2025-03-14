@@ -1,2 +1,4 @@
-# Monash
-Contains all of the work contributed and effort placed towards the units/subjects I've completed for my degree
+# Assessment 3
+- Individual Assessment
+- Practice Reflection
+- Review what you have learned and experienced throughout the project assignments
