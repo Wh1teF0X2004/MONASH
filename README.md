@@ -17,7 +17,7 @@
 - [x] Y1S2
 - [ ] Y2S1
   - [x] FIT2004
-  - [ ] FIT2081
+  - [x] FIT2081
   - [x] FIT2094
   - [ ] FIT2099 - Upload Partially Completed
 - [ ] Y2S2
