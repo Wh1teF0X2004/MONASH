@@ -11,3 +11,27 @@
   - <u>*Units were taken during participation of GIP*</u>
 - **Year 3 Semester 1 (Y3S1)**: FIT3152, FIT3163, FIT3183, ETW2001
 - **Year 3 Semester 2 (Y3S2)**: FIT3003, FIT3164, FIT3179, ETW3482
+
+## Upload Progress
+- [x] Y1S1
+- [x] Y1S2
+- [ ] Y2S1
+  - [x] FIT2004
+  - [ ] FIT2081
+  - [x] FIT2094
+  - [ ] FIT2099 - Upload Partially Completed
+- [ ] Y2S2
+  - [x] FIT1013
+  - [x] FIT2014
+  - [x] FIT2086
+  - [ ] FIT2095 - Upload Partially Completed
+- [ ] Y3S1
+  - [x] ETW2001
+  - [ ] FIT3152 - Upload Partially Completed
+  - [ ] FIT3182 - Upload Partially Completed
+  - [ ] FIT3163
+- [ ] Y3S2
+  - [ ] ETW3482
+  - [x] FIT3003
+  - [ ] FIT3179
+  - [ ] FIT3164
