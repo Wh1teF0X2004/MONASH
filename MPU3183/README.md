@@ -1,2 +1,3 @@
-# Monash
-Contains all of the work contributed and effort placed towards the units/subjects I've completed for my degree
+# MPU3183 - APPRECIATION OF ETHICS AND CIVILISATIONS
+- General Studies
+- Class 2022 Semester 2

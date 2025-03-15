@@ -1,2 +1,2 @@
-# Monash
-Contains all of the work contributed and effort placed towards the units/subjects I've completed for my degree
+# FIT2099 - OBJECT ORIENTED DESIGN AND IMPLEMENTATION
+- Class 2023 Semester 1

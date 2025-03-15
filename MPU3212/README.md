@@ -1,2 +1,3 @@
-# Monash
-Contains all of the work contributed and effort placed towards the units/subjects I've completed for my degree
+# MPU3212 - BAHASA KEBANGSAAN A (NATIONAL LANGUAGE A)
+- General Studies
+- Class 2022 Semester 1
