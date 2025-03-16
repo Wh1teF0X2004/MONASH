@@ -1,0 +1,49 @@
+<main class="d-flex justify-content-center mt-4">
+    <div class="card">
+        <div class="card-body">
+            <button (click)="onClick()">Load Event</button>
+            <div class="row row-cols-1 g-3">
+                <div class="col">                
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Start</th>
+                                <th scope="col">End</th>
+                                <th scope="col">Duration</th>
+                                <th scope="col">Is Active</th>
+                                <th scope="col">Capacity</th>
+                                <th scope="col">Tickets Available</th>
+                                <th scope="col">Category ID</th>
+                                <th scope="col">Actions</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let event of eventsDB">
+                                <th scope="row">{{ event.id }}</th>
+                                <td>{{ event.name }}</td>
+                                <td>
+                                    {{ event.startDateTime | datePipe }}
+                                </td>
+                                <td>
+                                    {{ calculateEndTime(event.startDateTime, event.durationInMinutes) }}
+                                </td>
+                                <td>{{ event.durationInMinutes | duration }}</td>
+                                <td>{{ event.isActive }}</td>
+                                <td>{{ event.capacity }}</td>
+                                <td>{{ event.ticketsAvailable }}</td>
+                                <td>
+                                    <a *ngFor="let category of event.categoryList" [routerLink]="'/euan/event/detail/' + category">{{ category }}</a>
+                                </td>
+                                <td><a routerLink="/euan/event/detail/{{event.id}}" class="btn btn-primary">View Event</a></td>
+                                <td><button class="btn btn-primary" (click)="onDelete(event.id)">Delete Event</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

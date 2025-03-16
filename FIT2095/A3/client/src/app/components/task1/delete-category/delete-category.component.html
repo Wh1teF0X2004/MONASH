@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">Delete Category</h1>
+            <div class="form-group">
+                <label for="name">Category id:</label>
+                <input type="text" class="form-control" name="id" [(ngModel)]="id" placeholder="Enter category ID" ngModel required>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3" (click)="deleteButton()">Delete Category</button>
+        </div>
+    </div>
+</div>  
+
+<!-- <div class="container" style="width: 70%;">
+    <h1>Delete Category</h1>
+    <h5><div class="sub-header">Provide category ID & click delete</div></h5>
+    <form id="categoryForm" class="needs-validation" novalidate action="/33085625/category/delete" method="POST">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="id" placeholder="Enter category ID" required>
+            <div class="invalid-feedback">
+                Please provide a valid category ID.
+            </div>
+        </div>
+        <form action="list_category.html">
+            <button type="submit" style="margin-top: 1rem;" class="btn btn-primary">Delete Category</button>
+        </form>
+    </form>
+</div> -->
+

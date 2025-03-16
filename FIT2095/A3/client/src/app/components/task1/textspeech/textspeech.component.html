@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="card text-center mx-auto" style="max-width: 400px;">
+        <div class="card-body">
+            <h1 class="card-title">Input Text To be converted to speech</h1>
+            <div class="form-group">    
+                <label for="name">Text:</label>
+                <input type="text" class="form-control" name="text" [(ngModel)]="text" required>
+            </div>
+            <br>
+            <div class="form-group" *ngIf="isConverted">
+                <audio controls>
+                    <!-- <source src="../assets/audio_files/{{thePath}}" type="audio/mp3"> -->
+                    <source src={{thePath}} type="audio/mp3">
+                    <!-- <source src="../assets/audio_files/output.mp3" type="audio/mpeg"> -->
+                </audio>   
+            </div>
+            <br>     
+            <button type="submit" class="btn btn-primary mt-3" (click)="onSubmit()">Convert</button>
+        </div>
+    </div>
+</div>

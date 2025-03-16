@@ -1,0 +1,20 @@
+.main-app {
+    display: block;
+    padding: auto;
+}
+
+.main-index-content {
+    display: flex;
+    justify-content: center;
+}
+
+.section-cards {
+    display: flex;
+    justify-content: center; 
+    gap: 2rem;
+}
+
+.banner-image{
+    max-width: 40rem;
+}
+

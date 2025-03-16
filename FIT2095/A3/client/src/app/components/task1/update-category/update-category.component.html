@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">Select one of the Categories</h1>
+            <div class="form-group">
+                <label for="name">Selected Category ID:</label>
+                <h3>{{id}}</h3>
+                <label for="name">New Name:</label>
+                <input type="text" class="form-control" name="id" [(ngModel)]="newCategoryName" required>
+                <label for="name">New Description:</label>
+                <input type="text" class="form-control" name="id" [(ngModel)]="newCategoryDescription" required>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3" (click)="updateButton()">Update</button>
+        </div>
+    </div>
+</div>    
+<main class="d-flex justify-content-center mt-4">
+    <div class="card">
+        <div class="card-body">
+            <div class="row row-cols-1 g-3">
+                <div class="col">                
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Created Date</th>
+                                <th scope="col">Select</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let category of categoryDB">
+                                <th scope="row">{{ category.id }}</th>
+                                <td>{{ category.name }}</td>
+                                <td><img  src="../assets/images/{{category.image}}" alt="category image" style="max-height: 6rem;"></td>
+                                <td>
+                                    {{ category.createdAt | datePipe }}
+                                </td>
+                                <td><button class="btn btn-primary" (click)="selectCategoryButton(category.id)">Select</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

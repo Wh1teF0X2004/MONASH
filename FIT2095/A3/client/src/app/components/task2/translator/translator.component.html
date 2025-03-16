@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="card">    
+        <div class="card-body">
+            <button (click)="onClick()">Refresh</button>
+            <h1 class="card-title">Select one of the Events</h1>
+            <div class="form-group">    
+                <label for="name">Text To Translate:</label>
+                <input type="text" class="form-control" name="eventId" [(ngModel)]="text" required>
+                <label for="lang">Language Choice:</label>
+                <select class="form-control" name="lang" [(ngModel)]="lang" required>
+                    <option value="de">German</option>
+                    <option value="fr">French</option>
+                    <option value="zh">Chinese</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3" (click)="sendTranslate()">Update</button>
+        </div>
+    </div>
+</div>    
+<br>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Text</th>
+                        <th scope="col">Language</th>
+                        <th scope="col">Translation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let translation of translations">
+                       <td>{{translation.text}}</td>
+                       <td>{{translation.lang | language}}</td>
+                       <td>{{translation.translation}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

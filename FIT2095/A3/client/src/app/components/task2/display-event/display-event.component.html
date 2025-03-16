@@ -1,0 +1,29 @@
+<main  class="main-display-event" style="height: 100vh; width: 100vw;">
+    <div class="card" style="width: 1000px">
+        <div class="container" style="width: 70%;">
+            <img src="../assets/images/{{image }}" alt="events image" style="max-height: 10rem;">
+            <ng-container *ngIf="eventId">
+                <p><strong>Object ID: </strong> {{ objectId }}</p>
+                <p><strong>Event ID: </strong> {{ eventId }}</p>
+                <p><strong>Name: </strong> {{ name }}</p>
+                <p><strong>Description: </strong> {{ description }}</p>
+                <p><strong>Start Date and Time: </strong> {{ startDateTime | datePipe }}</p>
+                <p><strong>End Date and Time: </strong> {{ calculateEndTime(startDateTime, durationInMinutes) }}</p>                    
+                <p><strong>Duration: </strong> {{ durationInMinutes | duration }}</p>
+                <p><strong>Capacity: </strong> {{ capacity }}</p>
+                <p><strong>Tickets Available: </strong> {{ ticketsAvailable === null ? 'N/A' : ticketsAvailable }}</p>
+                <p><strong>Categories: </strong>  <a *ngFor="let category of categoryList" [routerLink]="'/euan/event/detail/' + category">{{ category }}</a></p>
+                <p><strong>Is Active: </strong> {{ isActive }}</p>
+                <p><strong>Created At: </strong> {{ createdAt | datePipe }}</p>
+            </ng-container>
+        </div>
+    </div>
+</main>
+
+  
+  
+  
+  
+  
+  
+  

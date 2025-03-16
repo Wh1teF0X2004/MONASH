@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <button (click)="onClick()">Refresh</button>
+            <h1 class="card-title">Select one of the Events</h1>
+            <div class="form-group">
+                <label for="name">Selected Id:</label>
+                <h3>ID: {{eventId}}</h3>
+                <label for="name">New Name:</label>
+                <input type="text" class="form-control" name="eventId" [(ngModel)]="eventNameUpdate" required>
+                <label for="name">New Capacity:</label>
+                <input type="number" class="form-control" name="eventId" [(ngModel)]="eventNameCapacity" required>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3" (click)="updateButton()">Update</button>
+        </div>
+    </div>
+</div>    
+<main class="d-flex justify-content-center mt-4">
+    <div class="card">
+        <div class="card-body">
+            <div class="row row-cols-1 g-3">
+                <div class="col">                
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Created Date</th>
+                                <th scope="col">Select</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let event of eventsDB">
+                                <th scope="row">{{ event.id }}</th>
+                                <td>{{ event.name }}</td>
+                                <td><img  src="../assets/images/{{event.imagePath}}" alt="events image" style="max-height: 6rem;"></td>
+                                <td>
+                                    {{ event.startDateTime | datePipe }}
+                                </td>
+                                <td><button class="btn btn-primary" (click)="selectEventButton(event.id)">Select</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

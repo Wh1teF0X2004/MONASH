@@ -1,0 +1,58 @@
+<div class="container mb-5">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title mb-4">Create Event</h1>
+            <form id="eventForm" (ngSubmit)="onSubmit(eventForm)" class="needs-validation" #eventForm="ngForm">
+                <div class="form-group mb-3">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" name="name" ngModel required>
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="description">Description:</label>
+                    <textarea class="form-control" name="description" ngModel></textarea>
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="startDateTime">Start Date and Time:</label>
+                    <input type="datetime-local" class="form-control" name="startDateTime" ngModel required>
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="duration">Duration (in minutes):</label>
+                    <input type="number" class="form-control" name="duration" ngModel required>
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="isActive">Is Active:</label>
+                    <select class="form-control" name="isActive" ngModel required>
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="imagePath">Image Path:</label>
+                    <input type="text" class="form-control" name="imagePath" ngModel>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="capacity">Capacity:</label>
+                    <input type="number" class="form-control" name="capacity" ngModel required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="tickets">Tickets Available:</label>
+                    <input type="number" class="form-control" name="tickets" ngModel>
+                </div>
+                
+                <div class="form-group">
+                    <label for="categoryId">Category ID:</label>
+                    <input type="text" class="form-control" name="categoryIds" ngModel required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary mt-4">Create Event</button>
+            </form>
+        </div>
+    </div>
+</div>
