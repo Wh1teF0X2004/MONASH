@@ -1,0 +1,24 @@
+<p>delete-computer works!</p>
+<!-- <h2>
+    Please input the computer id to be deleted
+</h2>
+
+<h4> Computer ID: </h4>
+<input [(ngModel)] = id/> 
+
+<button (click) = onDeleteComputer> Delete Computer </button> -->
+
+<div class="section">
+    <table class="table table-striped">
+      <tr>
+        <th>CPU</th>
+        <th>RAM</th>
+        <th>Delete</th>
+      </tr>
+      <tr *ngFor="let computer of allComputer">
+        <td>{{computer.cpu}}</td>
+        <td>{{computer.ram}}</td>
+        <td><button type="submit" class="btn btn-primary" (click)="onDeleteComputer(computer)">Delete</button></td>
+      </tr>
+    </table>
+  </div>

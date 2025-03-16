@@ -1,0 +1,13 @@
+<!-- app.component.html -->
+<div>
+  <h1>Broadcast to Client Application</h1>
+  <div>
+    <input [(ngModel)]="message" placeholder="Enter a message" (keyup.enter)="sendMessage()" />
+    <button (click)="sendMessage()">Send</button>
+  </div>
+  <div>
+    <ul>
+      <li *ngFor="let msg of message">{{ msg.name }}: {{ msg.message }}</li>
+    </ul>
+  </div>
+</div>

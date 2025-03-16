@@ -1,0 +1,3 @@
+Execute your app using the following:
+
+$>node readfile.js

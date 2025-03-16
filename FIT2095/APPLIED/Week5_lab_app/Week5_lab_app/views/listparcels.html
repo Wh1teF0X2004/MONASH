@@ -1,0 +1,37 @@
+<html>
+<head>
+    <link rel="stylesheet" href="poms.css">
+</head>
+
+<body>
+        <h1>Welcome to POMS App (Week 5)</h1>
+    <a href="/">Home</a>
+    <a href="/addparcel">Add New Parcel</a>
+    <a href="/getparcels">List Parcels</a>
+    <a href="/delparcel">Delete Parcel</a>
+    <a href="/udpateparcel">Update Parcel</a>
+    <hr />
+
+    <table id="parcels"> 
+        <tr>
+            <th>ID</th>
+            <th>Sender</th>
+            <th>Address</th>
+            <th>weight</th>
+            <th>is Fragile?</th>
+        </tr>
+        <% for(let i=0;i<parcels.length;i++){ %>
+        <tr>
+            <td><%= parcels[i]._id %></td>
+            <td><%= parcels[i].sender %></td>
+            <td><%= parcels[i].address %></td>
+            <td><%= parcels[i].weight %></td>
+            <td><%= parcels[i].fragile %></td>
+        </tr>
+        <%} %>
+    </table>
+</body>
+
+
+
+</html>
