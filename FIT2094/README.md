@@ -4,6 +4,7 @@
 - Assessment 1b (30%): Logical Design (Relational)
 - Assessment 2a (25%): Relational Database Implementation and Manipulation
 - Assessment 2b (35%): Relational and Non Relational Database Query and PL/SQL
+- Technologies Used: EdStem, Oracle SQL-Developer, Visual Studio Code, Microsoft Words/Google Docs, GitLab (Git)
 
 ## Assessment 1
 - Group Assessment
