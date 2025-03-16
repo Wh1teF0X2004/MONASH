@@ -4,6 +4,7 @@
 - Assessment 2 (20%)
 - Assessment 3 (20%)
 - Scheduled Final Assessment (50%)
+- Technologies Used: R Studio, Microsoft Words/Google Docs, GitLab (Git)
   
 ## Statistical Modelling Foundations in Data Science
 This unit delves into the statistical modelling principles essential for the analytical dimensions of Data Science. The curriculum encompasses:
