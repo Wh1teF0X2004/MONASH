@@ -5,6 +5,7 @@
 - Assessment 3 (10%): OLAP Quiz
 - Scheduled Final Assessment (50%)
 - This repository contains all Applied Class SQL code
+- Technologies Used: EdStem, Oracle SQL-Developer, Visual Studio Code, Microsoft Words/Google Docs, GitLab (Git)
 
 ## Assessment 1
 - Individual Assignment
