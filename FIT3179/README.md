@@ -1,4 +1,4 @@
-# DATA VISUALIZATION
+# FIT3179: DATA VISUALIZATION 
 - Class 2024 Semester 2
 - Technologies Used: Visual Studio Code, Microsoft Words/Google Docs, GitLab (Git), Tableau
     - Tableau Profile: https://public.tableau.com/app/profile/kai.yan.foo/vizzes
