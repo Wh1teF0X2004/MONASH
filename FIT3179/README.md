@@ -1,2 +1,16 @@
-# Monash
-Contains all of the work contributed and effort placed towards the units/subjects I've completed for my degree
+# DATA VISUALIZATION
+- Class 2024 Semester 2
+- Technologies Used: Visual Studio Code, Microsoft Words/Google Docs, GitLab (Git), Tableau
+    - Tableau Profile: https://public.tableau.com/app/profile/kai.yan.foo/vizzes
+- Data Visualisation 1: 
+    - Topic/Title: Malaysia's Public Transport Service Ridership Analysis
+    - Link: https://public.tableau.com/views/33085625_Asgn1/Dashboard5?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
+- Homework 4:
+    - FIT3179 Homework Week 4.1: https://public.tableau.com/views/Homeworkweek4Task1Raw_17249401323710/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
+    - FIT3179 Homework Week 4.2: https://public.tableau.com/views/HomeworkWeek4_17249401760690/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
+- Homework 5: https://public.tableau.com/views/Homeworkweek5_17242291508220/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
+- Data Visualisation 2:
+    - Topic/Title: Tourism Insights --> Monthly Foreign Arrivals in Malaysia
+    - Link: https://wh1tef0x2004.github.io/Data_Visualisation_Project/	
+- Homework 9: https://wh1tef0x2004.github.io/Data_Visualisation-Homework9/
+- Homework 10: https://wh1tef0x2004.github.io/Data_Visualisation-Homework10/

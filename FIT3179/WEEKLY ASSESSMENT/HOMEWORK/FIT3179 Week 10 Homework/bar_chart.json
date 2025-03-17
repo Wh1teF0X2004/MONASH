@@ -1,0 +1,66 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "height": 500,
+    "width": 500,
+    "title": "Total Arrivals by State in Malaysia",
+    "data": {
+      "url": "./arrivals_summarized_with_coords.csv"
+    },
+    "params": [
+      {
+        "name": "selectedState",
+        "bind": {
+          "input": "select",
+          "options": [
+            null,
+            "Kedah",
+            "Pulau Pinang",
+            "Johor",
+            "Perlis",
+            "Sarawak",
+            "Selangor",
+            "Sabah",
+            "Perak",
+            "Kelantan",
+            "Melaka",
+            "W.P. Labuan",
+            "Negeri Sembilan",
+            "Pahang",
+            "Terengganu"
+          ],
+          "name": "Select State: "
+        }
+      }
+    ],
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "soe",
+        "type": "nominal",
+        "title": "State"
+      },
+      "y": {
+        "field": "arrivals_all",
+        "type": "quantitative",
+        "title": "Total Arrivals"
+      },
+      "color": {
+        "condition": {
+          "test": "selectedState == null || datum.soe == selectedState",
+          "value": "skyblue"
+        },
+        "value": "lightgrey"
+      },
+      "opacity": {
+        "condition": {
+          "test": "selectedState == null || datum.soe == selectedState",
+          "value": 1
+        },
+        "value": 0.5
+      }
+    },
+    "config": {
+      "view": {"step": 20}
+    }
+  }
+  

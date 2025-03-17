@@ -1,0 +1,35 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Malaysia Arrivals by State",
+    "width": 800,
+    "height": 400,
+    "projection": {"type": "equalEarth"},
+    "data": {
+      "url": "./malaysia-states.topojson",
+      "format": {"type": "topojson", "feature": "states"}
+    },
+    "transform": [
+      {
+        "lookup": "properties.Name",
+        "from": {
+          "data": {
+            "url": "./arrivals_with_coords.csv"
+          },
+          "key": "soe",
+          "fields": ["arrivals"]
+        }
+      }
+    ],
+    "mark": {"type": "geoshape"},
+    "encoding": {
+      "color": {
+        "field": "arrivals",
+        "type": "quantitative"
+      },
+      "tooltip": [
+        {"field": "properties.Name", "type": "nominal", "title": "State"},
+        {"field": "arrivals", "type": "quantitative", "title": "Arrivals"}
+      ]
+    }
+  }
+    

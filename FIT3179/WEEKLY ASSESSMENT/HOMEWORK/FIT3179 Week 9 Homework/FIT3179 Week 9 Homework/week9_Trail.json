@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Malaysia Arrivals",
+  "width": 800,
+  "height": 400,
+  "projection": {"type": "equalEarth"},
+  "data": {
+    "url": "./geoBoundaries-MYS-ADM1.topojson",
+    "format": {"type": "topojson", "feature": "MYSADM1gbOpen"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.shapeName",
+      "from": {
+        "data": {
+          "url": "./arrivals_soe.csv"
+        },
+        "key": "soe",
+        "fields": ["arrivals"]
+      }
+    }
+  ],
+  "mark": {"type": "geoshape"},
+  "encoding": {
+    "color": {
+      "field": "arrivals",
+      "type": "quantitative"
+    },
+    "tooltip": [
+      {"field": "properties.shapeName", "type": "nominal", "title": "State"},
+      {"field": "arrivals", "type": "quantitative", "title": "Arrivals"}
+    ]
+  }
+}
+  

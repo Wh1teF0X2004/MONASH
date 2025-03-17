@@ -1,0 +1,39 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "height": 500,
+    "width": 500,
+    "title": "Total Arrivals by State in Malaysia",
+    "data": {
+        "url": "./arrivals_summarized_with_coords.csv"
+    },
+    "mark": "circle",
+    "encoding": {
+        "x": {
+        "field": "longitude",
+        "type": "quantitative",
+        "title": "Longitude"
+        },
+        "y": {
+        "field": "latitude",
+        "type": "quantitative",
+        "title": "Latitude"
+        },
+        "size": {
+        "field": "arrivals_all",
+        "type": "quantitative",
+        "scale": {"type": "sqrt"},
+        "title": "Total Arrivals"
+        },
+        "color": {
+        "field": "soe",
+        "type": "nominal",
+        "scale": {"scheme": "category20b"},
+        "title": "State"
+        },
+        "tooltip": [
+        {"field": "soe", "type": "nominal", "title": "State"},
+        {"field": "arrivals_all", "type": "quantitative", "format": ","}
+        ]
+    }
+}
+  
