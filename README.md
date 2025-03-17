@@ -38,7 +38,7 @@ If you have any questions or concerns, feel free to reach out to me. However, I 
 ---
 
 
-## Unit Undertaken:
+## Unit(s) Undertaken:
 - [x] Y1S1
   - [x] FIT1045: ALGORITHMS AND PROGRAMMING FUNDAMENTALS IN PYTHON
   - [x] FIT1047: INTRODUCTION TO COMPUTER SYSTEMS, NETWORKS, AND SECURITY
