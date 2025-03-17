@@ -2,9 +2,7 @@
 - Bachelor's Degree of Computer Science with specialization in Data Science
 - Participated in Global Intercampus Program (GIP) in Y2S2
 - Graduation Ceremony: April 2025
-- Please read the entire README.md file before continuing further in this repository
-
-### Units taken/completed:
+- Please read the **entire README.md file** before continuing further in this repository
 - **Year 1 Semester 1 (Y1S1)**: FIT1045, FIT1047, FIT1051, MAT1830, MPU3212
 - **Year 1 Semester 2 (Y1S2)**: FIT1008, FIT1043, FIT1055, MAT1841, MPU3183, MPU3193
 - **Year 2 Semester 1 (Y2S1)**: FIT2004, FIT2081, FIT2094, FIT2099
