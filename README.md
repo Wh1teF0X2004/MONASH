@@ -2,8 +2,9 @@
 - Bachelor's Degree of Computer Science with specialization in Data Science
 - Participated in Global Intercampus Program (GIP) in Y2S2
 - Graduation Ceremony: April 2025
+- Please read the entire README.md file before continuing further in this repository
 
-## Units taken/completed:
+### Units taken/completed:
 - **Year 1 Semester 1 (Y1S1)**: FIT1045, FIT1047, FIT1051, MAT1830, MPU3212
 - **Year 1 Semester 2 (Y1S2)**: FIT1008, FIT1043, FIT1055, MAT1841, MPU3183, MPU3193
 - **Year 2 Semester 1 (Y2S1)**: FIT2004, FIT2081, FIT2094, FIT2099
@@ -12,7 +13,34 @@
 - **Year 3 Semester 1 (Y3S1)**: FIT3152, FIT3163, FIT3183, ETW2001
 - **Year 3 Semester 2 (Y3S2)**: FIT3003, FIT3164, FIT3179, ETW3482
 
-## Upload Progress
+---
+---
+---
+
+# **Academic Integrity Warning**
+**PLEASE READ THIS BEFORE USING ANY MATERIALS IN THIS REPOSITORY**
+This repository contains my personal learning materials, assignments, and projects that I completed during my time at [University Name]. I have uploaded these files solely for the purpose of saving my work for future reference. **These materials are not intended for use by others as their own work.**
+
+## **Important Notice**
+- **Do not copy, plagiarize, or submit any part of this work as your own.**  
+  Using someone else's work without proper attribution is a violation of academic integrity and can result in severe consequences, including failing grades, academic probation, or expulsion from your institution.
+- **Respect academic integrity.**  
+  Every student is expected to produce their own original work. If you find this repository helpful, use it only as a reference or for learning purposes. Always ensure that your submissions are your own creations.
+- **This repository is not a resource for cheating.**  
+  My intention in sharing these materials is to preserve my own work, not to enable academic dishonesty. Please use this repository responsibly.
+
+## **Consequences of Academic Misconduct**
+Academic misconduct undermines the value of education and can have serious repercussions for your academic and professional future. Universities and employers take integrity very seriously, and any breach of trust can have long-lasting effects.
+
+## **Contact**
+If you have any questions or concerns, feel free to reach out to me. However, I will not assist in any way that compromises academic integrity.
+> **Remember:** Your education is valuable. Do not jeopardize it by using someone else's work as your own.
+
+---
+---
+---
+
+## Content Upload Progress
 - [x] Y1S1
   - [x] FIT1045: ALGORITHMS AND PROGRAMMING FUNDAMENTALS IN PYTHON
   - [x] FIT1047: INTRODUCTION TO COMPUTER SYSTEMS, NETWORKS, AND SECURITY
