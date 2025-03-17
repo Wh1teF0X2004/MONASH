@@ -13,9 +13,9 @@
 - **Year 3 Semester 1 (Y3S1)**: FIT3152, FIT3163, FIT3183, ETW2001
 - **Year 3 Semester 2 (Y3S2)**: FIT3003, FIT3164, FIT3179, ETW3482
 
+
 ---
----
----
+
 
 # **Academic Integrity Warning**
 **PLEASE READ THIS BEFORE USING ANY MATERIALS IN THIS REPOSITORY**
@@ -36,9 +36,9 @@ Academic misconduct undermines the value of education and can have serious reper
 If you have any questions or concerns, feel free to reach out to me. However, I will not assist in any way that compromises academic integrity.
 > **Remember:** Your education is valuable. Do not jeopardize it by using someone else's work as your own.
 
+
 ---
----
----
+
 
 ## Content Upload Progress
 - [x] Y1S1
