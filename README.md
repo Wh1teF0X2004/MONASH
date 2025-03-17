@@ -40,7 +40,7 @@ If you have any questions or concerns, feel free to reach out to me. However, I 
 ---
 
 
-## Content Upload Progress
+## Unit Undertaken:
 - [x] Y1S1
   - [x] FIT1045: ALGORITHMS AND PROGRAMMING FUNDAMENTALS IN PYTHON
   - [x] FIT1047: INTRODUCTION TO COMPUTER SYSTEMS, NETWORKS, AND SECURITY
@@ -69,8 +69,8 @@ If you have any questions or concerns, feel free to reach out to me. However, I 
   - [x] FIT3152: DATA ANALYTICS
   - [x] FIT3182: BIG DATA MANAGEMENT AND PROCESSING
   - [x] FIT3163: DATA SCIENCE PROJECT 1
-- [ ] Y3S2
+- [x] Y3S2
   - [x] ETW3482: DATA MINING AND PREDICTIVE MODELLING
   - [x] FIT3003: BUSINESS INTELLIGENCE AND DATA WAREHOUSING
-  - [ ] FIT3179: DATA VISUALIZATION *(Upload Partially Completed)*
+  - [x] FIT3179: DATA VISUALIZATION 
   - [x] FIT3164: DATA SCIENCE PROJECT 2
