@@ -17,7 +17,8 @@
 
 # **Academic Integrity Warning**
 **PLEASE READ THIS BEFORE USING ANY MATERIALS IN THIS REPOSITORY**
-This repository contains my personal learning materials, assignments, and projects that I completed during my time at [University Name]. I have uploaded these files solely for the purpose of saving my work for future reference. **These materials are not intended for use by others as their own work.**
+
+This repository contains my personal learning materials, assignments, and projects that I completed during my time at Monash University. I have uploaded these files solely for the purpose of saving my work for future reference. **These materials are not intended for use by others as their own work.**
 
 ## **Important Notice**
 - **Do not copy, plagiarize, or submit any part of this work as your own.**  
